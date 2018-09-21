@@ -17,6 +17,7 @@
 		D827DD21215511D000763C05 /* ShelfTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D827DD20215511D000763C05 /* ShelfTableViewController.swift */; };
 		D827DD24215515CB00763C05 /* UIColor+hexcodes.swift in Sources */ = {isa = PBXBuildFile; fileRef = D827DD23215515CB00763C05 /* UIColor+hexcodes.swift */; };
 		D827DD262155355600763C05 /* BookTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D827DD252155355600763C05 /* BookTableViewController.swift */; };
+		D84A1B3B21553DBA00C937EC /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D84A1B3A21553DBA00C937EC /* LoginViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +35,7 @@
 		D827DD20215511D000763C05 /* ShelfTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShelfTableViewController.swift; sourceTree = "<group>"; };
 		D827DD23215515CB00763C05 /* UIColor+hexcodes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+hexcodes.swift"; sourceTree = "<group>"; };
 		D827DD252155355600763C05 /* BookTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookTableViewController.swift; sourceTree = "<group>"; };
+		D84A1B3A21553DBA00C937EC /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,6 +105,7 @@
 			children = (
 				D827DD20215511D000763C05 /* ShelfTableViewController.swift */,
 				D827DD252155355600763C05 /* BookTableViewController.swift */,
+				D84A1B3A21553DBA00C937EC /* LoginViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -254,6 +257,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D84A1B3B21553DBA00C937EC /* LoginViewController.swift in Sources */,
 				D827DD1F21550D2300763C05 /* Shelf.swift in Sources */,
 				D827DD082155077D00763C05 /* AppDelegate.swift in Sources */,
 				D827DD21215511D000763C05 /* ShelfTableViewController.swift in Sources */,
