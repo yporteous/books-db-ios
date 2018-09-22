@@ -14,9 +14,7 @@ class ShelfTableViewController: UITableViewController {
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
-		
-		shelves.append(Shelf(withName: "Fiction", andColour: "#bf9"))
-		shelves.append(Shelf(withName: "Science Fiction", andColour: "#8bf"))
+		shelves = User.currentUser.shelves
 	}
 	
 	// MARK: - Table view data source
@@ -28,26 +26,24 @@ class ShelfTableViewController: UITableViewController {
 	override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 		let cell = tableView.dequeueReusableCell(withIdentifier: "shelfCell", for: indexPath)
 		
-		let bg = UIColor(hex3: shelves[indexPath.row].colour)
-		
 		cell.textLabel!.text = shelves[indexPath.row].name
-		cell.backgroundColor = bg
+		cell.backgroundColor = shelves[indexPath.row].colour
 		
 		return cell
 	}
 	
 	override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-		tableView.deselectRow(at: indexPath, animated: true)
 		performSegue(withIdentifier: "goToShelf", sender: self)
 	}
 	
 	// MARK: - Navigation
 	
-	override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+	override func prepare(for segue: UIStoryboardSegue, sender: Any?) {		
 		let destinationVC = segue.destination as! BookTableViewController
 		
 		if let indexPath = tableView.indexPathForSelectedRow {
 			destinationVC.selectedShelf = shelves[indexPath.row]
+			tableView.deselectRow(at: indexPath, animated: true)
 		}
 	}
 	

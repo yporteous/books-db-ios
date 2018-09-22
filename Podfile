@@ -11,5 +11,6 @@ target 'Library' do
   # Pods for Library
   pod 'Alamofire'
   pod 'SwiftyJSON'
+  pod 'KeychainAccess'
 
 end

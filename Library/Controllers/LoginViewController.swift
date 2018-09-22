@@ -8,7 +8,8 @@
 
 import UIKit
 import Alamofire
-//import SwiftyJSON
+import SwiftyJSON
+import KeychainAccess
 
 class LoginViewController: UIViewController {
 	
@@ -16,19 +17,20 @@ class LoginViewController: UIViewController {
 	@IBOutlet weak var passwordTextField: UITextField!
 	
 	let loginURL = "http://localhost:3000/users/login"
+	let shelvesURL = "http://localhost:3000/shelves"
+	
+	let keychain = Keychain(service: "com.younusporteous.library")
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		
 		// Do any additional setup after loading the view.
-	}
-	
-	
-	// MARK: - Navigation
-	
-	// In a storyboard-based application, you will often want to do a little preparation before navigation
-	override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-		
+		// test for token
+		if keychain["token"] != nil {
+			getUserData()
+		} else {
+			print("No token; please log in")
+		}
 	}
 	
 	// MARK: - Logging in
@@ -47,26 +49,45 @@ class LoginViewController: UIViewController {
 		]
 		
 		Alamofire.request(loginURL, method: .post, parameters: parameters, encoding: JSONEncoding.default).responseJSON { (response) in
-			if let token = response.response?.allHeaderFields["x-auth"] {
-				
-				
-				// /*
-				let tag = "com.younusporteous.Library.token".data(using: .utf8)!
-				let addQuery : [String: Any] = [
-					kSecClass as String: kSecClassKey,
-					kSecAttrApplicationTag as String: tag,
-					kSecValueRef as String: token
-				]
-				
-				SecItemAdd(addQuery as CFDictionary, nil)
-				// */
+			if let token = response.response?.allHeaderFields["x-auth"] as? String {
+				self.keychain["token"] = token
+				User.currentUser.shelves = self.parseShelves(JSON(response.result.value!)["shelves"])
+				self.performSegue(withIdentifier: "login", sender: self)
+			} else {
+				print("unable to log in")
 			}
 		}
-		
-		
-		
-//		performSegue(withIdentifier: "login", sender: self)
 	}
 	
+	// MARK: - Navigation
+	
+	// In a storyboard-based application, you will often want to do a little preparation before navigation
+	override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+		// load necessary user data from the server before going to Shelf Table
+		
+	}
+	
+	func getUserData () {
+		let token = keychain["token"]!
+		
+		let headers : HTTPHeaders = [
+			"x-auth": token
+		]
+		
+		Alamofire.request(shelvesURL, method: .get, headers: headers).responseJSON { (response) in
+			User.currentUser.shelves = self.parseShelves(JSON(response.result.value!)["shelves"])
+			self.performSegue(withIdentifier: "login", sender: self)
+		}
+	}
+	
+	func parseShelves(_ shelves : JSON) -> [Shelf] {
+		var shelfArray = [Shelf]()
+		
+		for (_, shelfJSON) : (String, JSON) in shelves {
+			shelfArray.append(Shelf(withName: shelfJSON["name"].stringValue, andColour: shelfJSON["colour"].stringValue))
+		}
+		
+		return shelfArray
+	}
 	
 }

@@ -18,6 +18,9 @@
 		D827DD24215515CB00763C05 /* UIColor+hexcodes.swift in Sources */ = {isa = PBXBuildFile; fileRef = D827DD23215515CB00763C05 /* UIColor+hexcodes.swift */; };
 		D827DD262155355600763C05 /* BookTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D827DD252155355600763C05 /* BookTableViewController.swift */; };
 		D84A1B3B21553DBA00C937EC /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D84A1B3A21553DBA00C937EC /* LoginViewController.swift */; };
+		D84A1B3D215554A400C937EC /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = D84A1B3C215554A300C937EC /* User.swift */; };
+		D84A1B3F2155696C00C937EC /* Connection.swift in Sources */ = {isa = PBXBuildFile; fileRef = D84A1B3E2155696C00C937EC /* Connection.swift */; };
+		D87DD1CA21566F99008BECA0 /* BookSummary.swift in Sources */ = {isa = PBXBuildFile; fileRef = D87DD1C921566F99008BECA0 /* BookSummary.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +39,9 @@
 		D827DD23215515CB00763C05 /* UIColor+hexcodes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+hexcodes.swift"; sourceTree = "<group>"; };
 		D827DD252155355600763C05 /* BookTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookTableViewController.swift; sourceTree = "<group>"; };
 		D84A1B3A21553DBA00C937EC /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		D84A1B3C215554A300C937EC /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		D84A1B3E2155696C00C937EC /* Connection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Connection.swift; sourceTree = "<group>"; };
+		D87DD1C921566F99008BECA0 /* BookSummary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookSummary.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,9 +109,9 @@
 		D827DD192155087D00763C05 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				D84A1B3A21553DBA00C937EC /* LoginViewController.swift */,
 				D827DD20215511D000763C05 /* ShelfTableViewController.swift */,
 				D827DD252155355600763C05 /* BookTableViewController.swift */,
-				D84A1B3A21553DBA00C937EC /* LoginViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -122,7 +128,10 @@
 			isa = PBXGroup;
 			children = (
 				D827DD1C215508CA00763C05 /* Book.swift */,
+				D87DD1C921566F99008BECA0 /* BookSummary.swift */,
 				D827DD1E21550D2300763C05 /* Shelf.swift */,
+				D84A1B3C215554A300C937EC /* User.swift */,
+				D84A1B3E2155696C00C937EC /* Connection.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -236,6 +245,7 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-Library/Pods-Library-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/KeychainAccess/KeychainAccess.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
@@ -243,6 +253,7 @@
 			);
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/KeychainAccess.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -258,12 +269,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				D84A1B3B21553DBA00C937EC /* LoginViewController.swift in Sources */,
+				D84A1B3F2155696C00C937EC /* Connection.swift in Sources */,
 				D827DD1F21550D2300763C05 /* Shelf.swift in Sources */,
 				D827DD082155077D00763C05 /* AppDelegate.swift in Sources */,
 				D827DD21215511D000763C05 /* ShelfTableViewController.swift in Sources */,
+				D84A1B3D215554A400C937EC /* User.swift in Sources */,
 				D827DD24215515CB00763C05 /* UIColor+hexcodes.swift in Sources */,
 				D827DD262155355600763C05 /* BookTableViewController.swift in Sources */,
 				D827DD1D215508CA00763C05 /* Book.swift in Sources */,
+				D87DD1CA21566F99008BECA0 /* BookSummary.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

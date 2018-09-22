@@ -6,14 +6,14 @@
 //  Copyright © 2018 Younus Porteous. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 class Shelf {
 	var name : String
-	var colour : String
+	var colour : UIColor
 	
 	init(withName name : String = "", andColour colour : String = "#ccc") {
 		self.name = name
-		self.colour = colour
+		self.colour = UIColor(hex3: colour)
 	}
 }

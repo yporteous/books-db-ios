@@ -32,7 +32,9 @@
                             <outlet property="delegate" destination="7T1-mf-nIO" id="CH4-qO-jYU"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Bookshelves" id="pLl-2Z-Jto"/>
+                    <navigationItem key="navigationItem" title="Bookshelves" id="pLl-2Z-Jto">
+                        <barButtonItem key="backBarButtonItem" title="Shelves" id="akN-an-UFX"/>
+                    </navigationItem>
                     <connections>
                         <segue destination="kSQ-gk-AEW" kind="show" identifier="goToShelf" id="D6m-lg-kfk"/>
                     </connections>
@@ -99,6 +101,7 @@
         <!--Navigation Controller-->
         <scene sceneID="EXy-X3-gc0">
             <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="GbG-YR-aKP" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="dbH-HH-lNa" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="XlJ-5Y-Pun">
@@ -110,7 +113,6 @@
                         <segue destination="7T1-mf-nIO" kind="relationship" relationship="rootViewController" id="uLc-of-6Wp"/>
                     </connections>
                 </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="GbG-YR-aKP" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="194" y="789"/>
         </scene>
