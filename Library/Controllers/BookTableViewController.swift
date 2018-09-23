@@ -44,7 +44,16 @@ class BookTableViewController: UITableViewController {
 	// MARK: - Navigation
 	
 	override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-		tableView.deselectRow(at: indexPath, animated: true)
+		performSegue(withIdentifier: "openBookDetails", sender: self)
+	}
+	
+	override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+		let destinationVC = segue.destination as! BookDetailViewController
+		
+		if let indexPath = tableView.indexPathForSelectedRow {
+			destinationVC.selectedBookID = books[indexPath.row]._id
+			tableView.deselectRow(at: indexPath, animated: true)
+		}
 	}
 	
 	// MARK: - Loading books
@@ -67,7 +76,8 @@ class BookTableViewController: UITableViewController {
 		
 		for (_, bookJSON) : (String, JSON) in books {
 			if selectedShelf?.name == "All" || bookJSON["shelf"].stringValue == selectedShelf?.name {
-				bookArray.append(BookSummary(withTitle: bookJSON["title"].stringValue,
+				bookArray.append(BookSummary(withID: bookJSON["_id"].stringValue,
+																		 title: bookJSON["title"].stringValue,
 																		 author: bookJSON["author"].stringValue,
 																		 tags: bookJSON["tags"].stringValue,
 																		 shelf: bookJSON["shelf"].stringValue))

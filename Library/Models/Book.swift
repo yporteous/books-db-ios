@@ -8,6 +8,8 @@
 
 import Foundation
 
+// try using Codable to create these?
+
 class Book {
 	var title : String = ""
 	var author : String = ""

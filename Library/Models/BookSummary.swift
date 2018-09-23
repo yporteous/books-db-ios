@@ -9,12 +9,14 @@
 import Foundation
 
 class BookSummary {
+	var _id : String = ""
 	var title : String = ""
 	var author : String = ""
 	var tags : String = ""
 	var shelf : String = ""
 	
-	init(withTitle title : String, author : String, tags : String, shelf : String) {
+	init(withID id : String, title : String, author : String, tags : String, shelf : String) {
+		_id = id
 		self.title = title
 		self.author = author
 		self.tags = tags
