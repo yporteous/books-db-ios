@@ -7,13 +7,18 @@
 //
 
 import UIKit
-import Alamofire
 import KeychainAccess
-import SwiftyJSON
+
+struct BooksRes : Codable {
+	var books = [BookSummary]()
+}
 
 class BookTableViewController: UITableViewController {
 	
 	var selectedShelf : Shelf?
+	
+	var booksResponse = BooksRes()
+	
 	var books = [BookSummary]()
 	
 	let keychain = Keychain(service: "com.younusporteous.library")
@@ -59,32 +64,29 @@ class BookTableViewController: UITableViewController {
 	// MARK: - Loading books
 	
 	func loadBooks() {
+		
 		let token = keychain["token"]!
 		
-		let headers : HTTPHeaders = [
-			"x-auth": token
-		]
+		guard let requestURL = URL(string: booksURL) else { return }
+		var request = URLRequest(url: requestURL)
 		
-		Alamofire.request(booksURL, method: .get, headers: headers).responseJSON { (response) in
-			self.books = self.parseShelves(JSON(response.value!)["books"])
-			self.tableView.reloadData()
-		}
-	}
-	
-	func parseShelves(_ books : JSON) -> [BookSummary] {
-		var bookArray = [BookSummary]()
+		request.setValue(token, forHTTPHeaderField: "x-auth")
 		
-		for (_, bookJSON) : (String, JSON) in books {
-			if selectedShelf?.name == "All" || bookJSON["shelf"].stringValue == selectedShelf?.name {
-				bookArray.append(BookSummary(withID: bookJSON["_id"].stringValue,
-																		 title: bookJSON["title"].stringValue,
-																		 author: bookJSON["author"].stringValue,
-																		 tags: bookJSON["tags"].stringValue,
-																		 shelf: bookJSON["shelf"].stringValue))
+		let task = URLSession.shared.dataTask(with: request) { (data, res, error) in
+			guard let receivedData = data else { return }
+			do {
+				let decoder = JSONDecoder()
+				self.booksResponse = try decoder.decode(BooksRes.self, from: receivedData)
+				self.books = self.booksResponse.books.filter({ (book) -> Bool in
+					return self.selectedShelf?.name == "All" || book.shelf == self.selectedShelf?.name
+				})
+				DispatchQueue.main.async {
+					self.tableView.reloadData()
+				}
+			} catch {
+				print("Error: \(error)")
 			}
 		}
-		
-		return bookArray
+		task.resume()
 	}
-	
 }

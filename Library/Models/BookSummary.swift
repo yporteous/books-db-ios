@@ -8,7 +8,7 @@
 
 import Foundation
 
-class BookSummary {
+class BookSummary : Codable {
 	var _id : String = ""
 	var title : String = ""
 	var author : String = ""

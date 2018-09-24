@@ -7,8 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		B22C86183C86947A557C42A2 /* Pods_Library.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 60918B322E4784A29CE5BA28 /* Pods_Library.framework */; };
-		D81A00E52156E8FB00815E26 /* BookDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D81A00E42156E8FB00815E26 /* BookDetailViewController.swift */; };
+		D80217122158504E0094D7B3 /* KeychainAccess.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D80217112158504E0094D7B3 /* KeychainAccess.framework */; };
 		D827DD082155077D00763C05 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D827DD072155077D00763C05 /* AppDelegate.swift */; };
 		D827DD0D2155077D00763C05 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D827DD0B2155077D00763C05 /* Main.storyboard */; };
 		D827DD0F2155077E00763C05 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D827DD0E2155077E00763C05 /* Assets.xcassets */; };
@@ -20,15 +19,12 @@
 		D827DD262155355600763C05 /* BookTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D827DD252155355600763C05 /* BookTableViewController.swift */; };
 		D84A1B3B21553DBA00C937EC /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D84A1B3A21553DBA00C937EC /* LoginViewController.swift */; };
 		D84A1B3D215554A400C937EC /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = D84A1B3C215554A300C937EC /* User.swift */; };
-		D84A1B3F2155696C00C937EC /* Connection.swift in Sources */ = {isa = PBXBuildFile; fileRef = D84A1B3E2155696C00C937EC /* Connection.swift */; };
+		D86884512159139E009332CB /* BookDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D86884502159139E009332CB /* BookDetailViewController.swift */; };
 		D87DD1CA21566F99008BECA0 /* BookSummary.swift in Sources */ = {isa = PBXBuildFile; fileRef = D87DD1C921566F99008BECA0 /* BookSummary.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		60918B322E4784A29CE5BA28 /* Pods_Library.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Library.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		9A42A6FE606E503412FD2693 /* Pods-Library.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Library.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Library/Pods-Library.debug.xcconfig"; sourceTree = "<group>"; };
-		D50E5BB826D37974370146BE /* Pods-Library.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Library.release.xcconfig"; path = "Pods/Target Support Files/Pods-Library/Pods-Library.release.xcconfig"; sourceTree = "<group>"; };
-		D81A00E42156E8FB00815E26 /* BookDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookDetailViewController.swift; sourceTree = "<group>"; };
+		D80217112158504E0094D7B3 /* KeychainAccess.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = KeychainAccess.framework; path = Carthage/Build/iOS/KeychainAccess.framework; sourceTree = "<group>"; };
 		D827DD042155077D00763C05 /* Library.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Library.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D827DD072155077D00763C05 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D827DD0C2155077D00763C05 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -42,7 +38,7 @@
 		D827DD252155355600763C05 /* BookTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookTableViewController.swift; sourceTree = "<group>"; };
 		D84A1B3A21553DBA00C937EC /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		D84A1B3C215554A300C937EC /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
-		D84A1B3E2155696C00C937EC /* Connection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Connection.swift; sourceTree = "<group>"; };
+		D86884502159139E009332CB /* BookDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookDetailViewController.swift; sourceTree = "<group>"; };
 		D87DD1C921566F99008BECA0 /* BookSummary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookSummary.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -51,26 +47,17 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B22C86183C86947A557C42A2 /* Pods_Library.framework in Frameworks */,
+				D80217122158504E0094D7B3 /* KeychainAccess.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		4F9D64BD138AA1491FADD851 /* Pods */ = {
+		D80217102158504E0094D7B3 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				9A42A6FE606E503412FD2693 /* Pods-Library.debug.xcconfig */,
-				D50E5BB826D37974370146BE /* Pods-Library.release.xcconfig */,
-			);
-			name = Pods;
-			sourceTree = "<group>";
-		};
-		7B9FE360E501F4CBADE54CDF /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				60918B322E4784A29CE5BA28 /* Pods_Library.framework */,
+				D80217112158504E0094D7B3 /* KeychainAccess.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -80,8 +67,7 @@
 			children = (
 				D827DD062155077D00763C05 /* Library */,
 				D827DD052155077D00763C05 /* Products */,
-				4F9D64BD138AA1491FADD851 /* Pods */,
-				7B9FE360E501F4CBADE54CDF /* Frameworks */,
+				D80217102158504E0094D7B3 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -114,7 +100,7 @@
 				D84A1B3A21553DBA00C937EC /* LoginViewController.swift */,
 				D827DD20215511D000763C05 /* ShelfTableViewController.swift */,
 				D827DD252155355600763C05 /* BookTableViewController.swift */,
-				D81A00E42156E8FB00815E26 /* BookDetailViewController.swift */,
+				D86884502159139E009332CB /* BookDetailViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -130,11 +116,10 @@
 		D827DD1B2155089F00763C05 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				D827DD1C215508CA00763C05 /* Book.swift */,
-				D87DD1C921566F99008BECA0 /* BookSummary.swift */,
-				D827DD1E21550D2300763C05 /* Shelf.swift */,
 				D84A1B3C215554A300C937EC /* User.swift */,
-				D84A1B3E2155696C00C937EC /* Connection.swift */,
+				D827DD1E21550D2300763C05 /* Shelf.swift */,
+				D87DD1C921566F99008BECA0 /* BookSummary.swift */,
+				D827DD1C215508CA00763C05 /* Book.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -154,11 +139,10 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = D827DD162155077E00763C05 /* Build configuration list for PBXNativeTarget "Library" */;
 			buildPhases = (
-				4F5FB7F3AABCC7EA8E5BACFE /* [CP] Check Pods Manifest.lock */,
 				D827DD002155077D00763C05 /* Sources */,
 				D827DD012155077D00763C05 /* Frameworks */,
 				D827DD022155077D00763C05 /* Resources */,
-				B4472182CD8B520AE0D17875 /* [CP] Embed Pods Frameworks */,
+				D802170F21584F630094D7B3 /* Carthage */,
 			);
 			buildRules = (
 			);
@@ -216,7 +200,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		4F5FB7F3AABCC7EA8E5BACFE /* [CP] Check Pods Manifest.lock */ = {
+		D802170F21584F630094D7B3 /* Carthage */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -224,45 +208,17 @@
 			inputFileListPaths = (
 			);
 			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
+				"$(SRCROOT)/Carthage/Build/iOS/KeychainAccess.framework",
 			);
-			name = "[CP] Check Pods Manifest.lock";
+			name = Carthage;
 			outputFileListPaths = (
 			);
 			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-Library-checkManifestLockResult.txt",
+				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/KeychainAccess.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		B4472182CD8B520AE0D17875 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-Library/Pods-Library-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
-				"${BUILT_PRODUCTS_DIR}/KeychainAccess/KeychainAccess.framework",
-				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/KeychainAccess.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Library/Pods-Library-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
+			shellScript = "/usr/local/bin/carthage copy-frameworks\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -272,10 +228,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				D84A1B3B21553DBA00C937EC /* LoginViewController.swift in Sources */,
-				D84A1B3F2155696C00C937EC /* Connection.swift in Sources */,
 				D827DD1F21550D2300763C05 /* Shelf.swift in Sources */,
 				D827DD082155077D00763C05 /* AppDelegate.swift in Sources */,
-				D81A00E52156E8FB00815E26 /* BookDetailViewController.swift in Sources */,
+				D86884512159139E009332CB /* BookDetailViewController.swift in Sources */,
 				D827DD21215511D000763C05 /* ShelfTableViewController.swift in Sources */,
 				D84A1B3D215554A400C937EC /* User.swift in Sources */,
 				D827DD24215515CB00763C05 /* UIColor+hexcodes.swift in Sources */,
@@ -425,11 +380,14 @@
 		};
 		D827DD172155077E00763C05 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 9A42A6FE606E503412FD2693 /* Pods-Library.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 6X79DN8TTM;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = Library/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -444,11 +402,14 @@
 		};
 		D827DD182155077E00763C05 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = D50E5BB826D37974370146BE /* Pods-Library.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 6X79DN8TTM;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = Library/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

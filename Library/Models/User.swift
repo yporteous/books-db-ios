@@ -7,19 +7,13 @@
 //
 
 import Foundation
-import Alamofire
-import SwiftyJSON
-import KeychainAccess
 
-
-class User {
+class User : Codable {
 	var _id = ""
+	var username = ""
 	var shelves = [Shelf]()
-	var books = [Book]()
 	
-	
-	
-	
-	static let currentUser = User()
+	static var currentUser = User()
 	
 }
+

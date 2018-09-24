@@ -8,12 +8,12 @@
 
 import UIKit
 
-class Shelf {
+class Shelf : Codable {
 	var name : String
-	var colour : UIColor
+	var colour : String
 	
 	init(withName name : String = "", andColour colour : String = "#ccc") {
 		self.name = name
-		self.colour = UIColor(hex3: colour)
+		self.colour = colour
 	}
 }

@@ -7,8 +7,8 @@
 //
 
 import UIKit
-import Alamofire
-import SwiftyJSON
+//import Alamofire
+//import SwiftyJSON
 import KeychainAccess
 
 class LoginViewController: UIViewController {
@@ -17,9 +17,12 @@ class LoginViewController: UIViewController {
 	@IBOutlet weak var passwordTextField: UITextField!
 	
 	let loginURL = "http://localhost:3000/users/login"
-	let shelvesURL = "http://localhost:3000/shelves"
+	let userURL = "http://localhost:3000/users/me"
 	
 	let keychain = Keychain(service: "com.younusporteous.library")
+	
+	//TODO: remove this after URLSession is working
+	//var currentUser = User()
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
@@ -41,13 +44,46 @@ class LoginViewController: UIViewController {
 	
 	func login(username : String, password : String) {
 		
-		let parameters : Parameters = [
-			"user": [
-				"username": username,
-				"password": password
-			]
-		]
+		//TODO: rewrite with NSURLSession
+		let encoder = JSONEncoder()
+		let body = """
+{
+	"username": "\(username)",
+	"password": "\(password)"
+}
+"""
 		
+		guard let requestURL = URL(string: loginURL) else { return }
+		var request = URLRequest(url: requestURL)
+		request.httpMethod = "POST"
+		
+		do {
+			request.httpBody = try encoder.encode(body)
+		} catch {
+			print("Could not encode: \(error)")
+		}
+		
+		let task = URLSession.shared.dataTask(with: request) { (data, res, error) in
+			
+			guard let token = (res as? HTTPURLResponse)?.allHeaderFields["token"] as? String else { return }
+			self.keychain["token"] = token
+			
+			guard let receivedData = data else { return }
+			do {
+				let decoder = JSONDecoder()
+				User.currentUser = try decoder.decode(User.self, from: receivedData)
+				
+				DispatchQueue.main.async {
+					self.performSegue(withIdentifier: "login", sender: self)
+				}
+				
+			} catch {
+				print("Error: \(error)")
+			}
+		}
+		task.resume()
+		
+		/*
 		Alamofire.request(loginURL, method: .post, parameters: parameters, encoding: JSONEncoding.default).responseJSON { (response) in
 			if let token = response.response?.allHeaderFields["x-auth"] as? String {
 				self.keychain["token"] = token
@@ -57,37 +93,32 @@ class LoginViewController: UIViewController {
 				print("unable to log in")
 			}
 		}
-	}
-	
-	// MARK: - Navigation
-	
-	// In a storyboard-based application, you will often want to do a little preparation before navigation
-	override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-		// load necessary user data from the server before going to Shelf Table
-		
+		// */
 	}
 	
 	func getUserData () {
 		let token = keychain["token"]!
 		
-		let headers : HTTPHeaders = [
-			"x-auth": token
-		]
+		guard let requestURL = URL(string: userURL) else { return }
+		var request = URLRequest(url: requestURL)
 		
-		Alamofire.request(shelvesURL, method: .get, headers: headers).responseJSON { (response) in
-			User.currentUser.shelves = self.parseShelves(JSON(response.result.value!)["shelves"])
-			self.performSegue(withIdentifier: "login", sender: self)
+		request.setValue(token, forHTTPHeaderField: "x-auth")
+		
+		
+		let task = URLSession.shared.dataTask(with: request) { (data, res, error) in
+			guard let receivedData = data else { return }
+			do {
+				let decoder = JSONDecoder()
+				User.currentUser = try decoder.decode(User.self, from: receivedData)
+				DispatchQueue.main.async {
+					self.performSegue(withIdentifier: "login", sender: self)
+				}
+			} catch {
+				print("Error: \(error)")
+			}
 		}
-	}
-	
-	func parseShelves(_ shelves : JSON) -> [Shelf] {
-		var shelfArray = [Shelf]()
+		task.resume()
 		
-		for (_, shelfJSON) : (String, JSON) in shelves {
-			shelfArray.append(Shelf(withName: shelfJSON["name"].stringValue, andColour: shelfJSON["colour"].stringValue))
-		}
-		
-		return shelfArray
 	}
 	
 }

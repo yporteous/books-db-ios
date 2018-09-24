@@ -27,7 +27,7 @@ class ShelfTableViewController: UITableViewController {
 		let cell = tableView.dequeueReusableCell(withIdentifier: "shelfCell", for: indexPath)
 		
 		cell.textLabel!.text = shelves[indexPath.row].name
-		cell.backgroundColor = shelves[indexPath.row].colour
+		cell.backgroundColor = UIColor(hex3: shelves[indexPath.row].colour)
 		
 		return cell
 	}
