@@ -47,4 +47,12 @@ class ShelfTableViewController: UITableViewController {
 		}
 	}
 	
+	// use viewDidAppear to clear shelf colour from menu bar
+	override func viewDidAppear(_ animated: Bool) {
+		super.viewDidAppear(animated)
+
+		navigationController?.navigationBar.barTintColor = nil
+		navigationController?.navigationBar.isTranslucent = true
+	}
+	
 }

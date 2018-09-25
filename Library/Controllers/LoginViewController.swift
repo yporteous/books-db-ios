@@ -16,18 +16,20 @@ class LoginViewController: UIViewController {
 	@IBOutlet weak var usernameTextField: UITextField!
 	@IBOutlet weak var passwordTextField: UITextField!
 	
-	let loginURL = "http://localhost:3000/users/login/"
-	let userURL = "http://localhost:3000/users/me/"
+	let defaults = UserDefaults.standard
+		
+	var loginURL = ""
+	var userURL = ""
 	
 	let keychain = Keychain(service: "com.younusporteous.library")
-	
-	//TODO: remove this after URLSession is working
-	//var currentUser = User()
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		
-		// Do any additional setup after loading the view.
+		//set urls
+		loginURL = defaults.string(forKey: "baseURL")! + "/users/login/"
+		userURL = defaults.string(forKey: "baseURL")! + "/users/me/"
+		
 		// test for token
 		if keychain["token"] != nil {
 			getUserData()
@@ -52,6 +54,8 @@ class LoginViewController: UIViewController {
 		]
 		
 		guard let requestURL = URL(string: loginURL) else { return }
+		print("Requesting from ", requestURL)
+		
 		var request = URLRequest(url: requestURL)
 		request.httpMethod = "POST"
 		request.setValue("application/json", forHTTPHeaderField: "Content-Type")
@@ -63,7 +67,12 @@ class LoginViewController: UIViewController {
 		}
 		
 		let task = URLSession.shared.dataTask(with: request) { (data, res, error) in
-			guard let token = (res as? HTTPURLResponse)?.allHeaderFields["x-auth"] as? String else { return }
+			print("Got response")
+			
+			guard let token = (res as? HTTPURLResponse)?.allHeaderFields["X-Auth"] as? String else {
+				print("Did not receive token")
+				return
+			}
 			self.keychain["token"] = token
 			
 			guard let receivedData = data else { return }

@@ -21,11 +21,14 @@ class BookTableViewController: UITableViewController {
 	
 	var books = [BookSummary]()
 	
+	let defaults = UserDefaults.standard
 	let keychain = Keychain(service: "com.younusporteous.library")
-	let booksURL = "http:localhost:3000/books"
+	var booksURL = "" //"http:localhost:3000/books"
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
+		
+		booksURL = defaults.string(forKey: "baseURL")! + "/books/"
 		
 		loadBooks()
 		
@@ -59,6 +62,11 @@ class BookTableViewController: UITableViewController {
 			destinationVC.selectedBookID = books[indexPath.row]._id
 			tableView.deselectRow(at: indexPath, animated: true)
 		}
+	}
+	
+	override func viewDidAppear(_ animated: Bool) {
+		super.viewDidAppear(animated)
+		navigationController?.navigationBar.barTintColor = UIColor(hex3: selectedShelf!.colour)
 	}
 	
 	// MARK: - Loading books

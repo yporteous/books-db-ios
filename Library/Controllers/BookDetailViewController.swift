@@ -12,10 +12,11 @@ import KeychainAccess
 class BookDetailViewController: UITableViewController {
 	
 	// MARK: - Properties
+	let defaults = UserDefaults.standard
 	
 	// networking
 	let keychain = Keychain(service: "com.younusporteous.library")
-	let bookURL = "http:localhost:3000/books/"
+	var bookURL = "" //"http:localhost:3000/books/"
 	
 	// interface
 	@IBOutlet weak var titleLabel: UILabel!
@@ -29,7 +30,9 @@ class BookDetailViewController: UITableViewController {
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
-		print(selectedBookID)
+		bookURL = defaults.string(forKey: "baseURL")! + "/books/"
+		
+		//print(selectedBookID)
 		getBook()
 	}
 	
@@ -73,6 +76,7 @@ class BookDetailViewController: UITableViewController {
 				
 				DispatchQueue.main.async {
 					self.updateHeaderFields()
+					self.tableView.reloadData()
 				}
 				
 			} catch {

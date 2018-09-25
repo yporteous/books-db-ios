@@ -212,7 +212,7 @@
                                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                 </textView>
                             </subviews>
-                            <color key="backgroundColor" red="0.46202266219999999" green="0.83828371759999998" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <constraints>
                                 <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="9n1-oz-DKb" secondAttribute="trailing" constant="100" id="57N-JD-Ou0"/>
                                 <constraint firstItem="d5m-Nv-M1Q" firstAttribute="leading" secondItem="k7J-Xh-xHw" secondAttribute="leading" constant="8" id="RfY-Oe-kVn"/>
