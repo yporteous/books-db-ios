@@ -16,8 +16,8 @@ class LoginViewController: UIViewController {
 	@IBOutlet weak var usernameTextField: UITextField!
 	@IBOutlet weak var passwordTextField: UITextField!
 	
-	let loginURL = "http://localhost:3000/users/login"
-	let userURL = "http://localhost:3000/users/me"
+	let loginURL = "http://localhost:3000/users/login/"
+	let userURL = "http://localhost:3000/users/me/"
 	
 	let keychain = Keychain(service: "com.younusporteous.library")
 	
@@ -44,31 +44,32 @@ class LoginViewController: UIViewController {
 	
 	func login(username : String, password : String) {
 		
-		//TODO: rewrite with NSURLSession
-		let encoder = JSONEncoder()
-		let body = """
-{
-	"username": "\(username)",
-	"password": "\(password)"
-}
-"""
+		let json = [
+			"user" : [
+				"username": username,
+				"password": password
+			]
+		]
 		
 		guard let requestURL = URL(string: loginURL) else { return }
 		var request = URLRequest(url: requestURL)
 		request.httpMethod = "POST"
+		request.setValue("application/json", forHTTPHeaderField: "Content-Type")
 		
 		do {
-			request.httpBody = try encoder.encode(body)
+			request.httpBody = try JSONSerialization.data(withJSONObject: json)
 		} catch {
 			print("Could not encode: \(error)")
 		}
 		
 		let task = URLSession.shared.dataTask(with: request) { (data, res, error) in
-			
-			guard let token = (res as? HTTPURLResponse)?.allHeaderFields["token"] as? String else { return }
+			guard let token = (res as? HTTPURLResponse)?.allHeaderFields["x-auth"] as? String else { return }
 			self.keychain["token"] = token
 			
 			guard let receivedData = data else { return }
+			
+			print(String(data: receivedData, encoding: String.Encoding.utf8) ?? "Data could not be printed")
+			
 			do {
 				let decoder = JSONDecoder()
 				User.currentUser = try decoder.decode(User.self, from: receivedData)
@@ -82,18 +83,6 @@ class LoginViewController: UIViewController {
 			}
 		}
 		task.resume()
-		
-		/*
-		Alamofire.request(loginURL, method: .post, parameters: parameters, encoding: JSONEncoding.default).responseJSON { (response) in
-			if let token = response.response?.allHeaderFields["x-auth"] as? String {
-				self.keychain["token"] = token
-				User.currentUser.shelves = self.parseShelves(JSON(response.result.value!)["shelves"])
-				self.performSegue(withIdentifier: "login", sender: self)
-			} else {
-				print("unable to log in")
-			}
-		}
-		// */
 	}
 	
 	func getUserData () {
