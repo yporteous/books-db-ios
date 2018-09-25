@@ -21,9 +21,7 @@ class BookDetailViewController: UITableViewController {
 	@IBOutlet weak var titleLabel: UILabel!
 	@IBOutlet weak var authorLabel: UILabel!
 	@IBOutlet weak var summaryLabel: UILabel!
-	
-	// attributes
-	
+		
 	// data
 	var selectedBookID : String = ""
 	var currentBook = Book()
@@ -38,7 +36,6 @@ class BookDetailViewController: UITableViewController {
 	// MARK: - Table view data source
 	
 	override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-		// #warning Incomplete implementation, return the number of rows
 		return detailArray.count
 	}
 	
@@ -64,7 +61,6 @@ class BookDetailViewController: UITableViewController {
 		
 		let task = URLSession.shared.dataTask(with: request) { (data, res, error) in
 			guard let receivedData = data else { return }
-			//guard let dataString = String(data: receivedData, encoding: String.Encoding.utf8) else {return}
 			do {
 				let decoder = JSONDecoder()
 				self.currentBook = try decoder.decode(Book.self, from: receivedData)
@@ -72,7 +68,7 @@ class BookDetailViewController: UITableViewController {
 					.children
 					.compactMap({ (child) -> (String, String) in
 						let value = "\(child.value)"
-						return (child.label!, value)
+						return (child.label!.capitalized, value)
 					})
 				
 				DispatchQueue.main.async {

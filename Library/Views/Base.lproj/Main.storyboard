@@ -192,6 +192,37 @@
                                 <constraint firstItem="E0S-ur-apA" firstAttribute="leading" secondItem="9Wd-2D-KuY" secondAttribute="leading" constant="8" id="x0P-b5-iir"/>
                             </constraints>
                         </view>
+                        <view key="tableFooterView" contentMode="scaleToFill" id="k7J-Xh-xHw" userLabel="Footer">
+                            <rect key="frame" x="0.0" y="292" width="375" height="200"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <subviews>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Notes" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9n1-oz-DKb">
+                                    <rect key="frame" x="8" y="8" width="46" height="21"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="21" id="fPz-tf-7g5"/>
+                                    </constraints>
+                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                    <nil key="textColor"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="notes here" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="d5m-Nv-M1Q">
+                                    <rect key="frame" x="8" y="37" width="359" height="155"/>
+                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                </textView>
+                            </subviews>
+                            <color key="backgroundColor" red="0.46202266219999999" green="0.83828371759999998" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <constraints>
+                                <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="9n1-oz-DKb" secondAttribute="trailing" constant="100" id="57N-JD-Ou0"/>
+                                <constraint firstItem="d5m-Nv-M1Q" firstAttribute="leading" secondItem="k7J-Xh-xHw" secondAttribute="leading" constant="8" id="RfY-Oe-kVn"/>
+                                <constraint firstItem="9n1-oz-DKb" firstAttribute="top" secondItem="k7J-Xh-xHw" secondAttribute="top" constant="8" id="Xl0-AA-m7Y"/>
+                                <constraint firstItem="9n1-oz-DKb" firstAttribute="leading" secondItem="k7J-Xh-xHw" secondAttribute="leading" constant="8" id="dgl-g2-cbT"/>
+                                <constraint firstAttribute="bottom" secondItem="d5m-Nv-M1Q" secondAttribute="bottom" constant="8" id="kej-uz-PGC"/>
+                                <constraint firstItem="d5m-Nv-M1Q" firstAttribute="top" secondItem="9n1-oz-DKb" secondAttribute="bottom" constant="8" id="vJH-hq-eju"/>
+                                <constraint firstAttribute="trailing" secondItem="d5m-Nv-M1Q" secondAttribute="trailing" constant="8" id="ygJ-G8-nDK"/>
+                            </constraints>
+                        </view>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="detailCell" id="KlZ-Sp-T8z">
                                 <rect key="frame" x="0.0" y="248" width="375" height="44"/>
@@ -215,7 +246,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bfK-dZ-aar" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2530" y="790"/>
+            <point key="canvasLocation" x="2528.8000000000002" y="789.35532233883066"/>
         </scene>
     </scenes>
 </document>
