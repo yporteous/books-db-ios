@@ -24,10 +24,7 @@ class BookTableViewController: UITableViewController {
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		
-		booksURL = defaults.string(forKey: "baseURL")! + "/books/"
-		
-		loadBooks()
-		
+		books = User.currentUser.books
 		self.navigationItem.title = selectedShelf?.name
 	}
 	
