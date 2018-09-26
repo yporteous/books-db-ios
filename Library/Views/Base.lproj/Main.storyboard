@@ -4,6 +4,7 @@
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -41,7 +42,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="luQ-HK-wL3" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="972" y="791"/>
+            <point key="canvasLocation" x="1732" y="1022"/>
         </scene>
         <!--Login View Controller-->
         <scene sceneID="Ehs-4A-pwN">
@@ -114,7 +115,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GbG-YR-aKP" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="194" y="789"/>
+            <point key="canvasLocation" x="953" y="1021"/>
         </scene>
         <!--Book Table View Controller-->
         <scene sceneID="a32-9v-HOp">
@@ -145,7 +146,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QTC-FP-gpS" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1767" y="791"/>
+            <point key="canvasLocation" x="2526" y="1022"/>
         </scene>
         <!--Book Detail View Controller-->
         <scene sceneID="7gZ-bK-Izw">
@@ -246,7 +247,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bfK-dZ-aar" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2528.8000000000002" y="789.35532233883066"/>
+            <point key="canvasLocation" x="3287" y="1021"/>
         </scene>
     </scenes>
 </document>

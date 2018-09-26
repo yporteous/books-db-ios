@@ -15,6 +15,7 @@ class ShelfTableViewController: UITableViewController {
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		shelves = User.currentUser.shelves
+		
 	}
 	
 	// MARK: - Table view data source

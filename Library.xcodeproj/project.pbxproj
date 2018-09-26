@@ -21,6 +21,7 @@
 		D84A1B3D215554A400C937EC /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = D84A1B3C215554A300C937EC /* User.swift */; };
 		D86884512159139E009332CB /* BookDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D86884502159139E009332CB /* BookDetailViewController.swift */; };
 		D87DD1CA21566F99008BECA0 /* BookSummary.swift in Sources */ = {isa = PBXBuildFile; fileRef = D87DD1C921566F99008BECA0 /* BookSummary.swift */; };
+		D8CDF809215B99A7006C35AB /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8CDF808215B99A7006C35AB /* ProfileViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,6 +41,7 @@
 		D84A1B3C215554A300C937EC /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		D86884502159139E009332CB /* BookDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookDetailViewController.swift; sourceTree = "<group>"; };
 		D87DD1C921566F99008BECA0 /* BookSummary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookSummary.swift; sourceTree = "<group>"; };
+		D8CDF808215B99A7006C35AB /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,6 +103,7 @@
 				D827DD20215511D000763C05 /* ShelfTableViewController.swift */,
 				D827DD252155355600763C05 /* BookTableViewController.swift */,
 				D86884502159139E009332CB /* BookDetailViewController.swift */,
+				D8CDF808215B99A7006C35AB /* ProfileViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -233,6 +236,7 @@
 				D86884512159139E009332CB /* BookDetailViewController.swift in Sources */,
 				D827DD21215511D000763C05 /* ShelfTableViewController.swift in Sources */,
 				D84A1B3D215554A400C937EC /* User.swift in Sources */,
+				D8CDF809215B99A7006C35AB /* ProfileViewController.swift in Sources */,
 				D827DD24215515CB00763C05 /* UIColor+hexcodes.swift in Sources */,
 				D827DD262155355600763C05 /* BookTableViewController.swift in Sources */,
 				D827DD1D215508CA00763C05 /* Book.swift in Sources */,

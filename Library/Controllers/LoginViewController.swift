@@ -20,6 +20,9 @@ class LoginViewController: UIViewController {
 		
 	var loginURL = ""
 	var userURL = ""
+	var bookURL = ""
+	
+	var token = ""
 	
 	let keychain = Keychain(service: "com.younusporteous.library")
 	
@@ -29,12 +32,15 @@ class LoginViewController: UIViewController {
 		//set urls
 		loginURL = defaults.string(forKey: "baseURL")! + "/users/login/"
 		userURL = defaults.string(forKey: "baseURL")! + "/users/me/"
+		bookURL = defaults.string(forKey: "baseURL")! + "/books/"
 		
 		// test for token
 		if keychain["token"] != nil {
+			token = keychain["token"]!
 			getUserData()
 		} else {
 			print("No token; please log in")
+			
 		}
 	}
 	
@@ -68,12 +74,13 @@ class LoginViewController: UIViewController {
 		
 		let task = URLSession.shared.dataTask(with: request) { (data, res, error) in
 			print("Got response")
-			
+			//print((res as? HTTPURLResponse)?.allHeaderFields)
 			guard let token = (res as? HTTPURLResponse)?.allHeaderFields["X-Auth"] as? String else {
 				print("Did not receive token")
 				return
 			}
 			self.keychain["token"] = token
+			self.token = token
 			
 			guard let receivedData = data else { return }
 			
@@ -85,6 +92,7 @@ class LoginViewController: UIViewController {
 				
 				DispatchQueue.main.async {
 					self.performSegue(withIdentifier: "login", sender: self)
+					//self.getUserBooks()
 				}
 				
 			} catch {
@@ -95,21 +103,28 @@ class LoginViewController: UIViewController {
 	}
 	
 	func getUserData () {
-		let token = keychain["token"]!
-		
 		guard let requestURL = URL(string: userURL) else { return }
 		var request = URLRequest(url: requestURL)
 		
 		request.setValue(token, forHTTPHeaderField: "x-auth")
 		
-		
 		let task = URLSession.shared.dataTask(with: request) { (data, res, error) in
 			guard let receivedData = data else { return }
+			
+			print(String(data: receivedData, encoding: .utf8) ?? "Data could not be printed")
+			
 			do {
 				let decoder = JSONDecoder()
 				User.currentUser = try decoder.decode(User.self, from: receivedData)
+				
+				
+				let encoder = JSONEncoder()
+				let userJSON = try encoder.encode(User.currentUser)
+				print(String(data: userJSON, encoding: .utf8) ?? "Data could not be printed")
+				print(User.currentUser)
 				DispatchQueue.main.async {
 					self.performSegue(withIdentifier: "login", sender: self)
+					//self.getUserBooks()
 				}
 			} catch {
 				print("Error: \(error)")
@@ -118,5 +133,30 @@ class LoginViewController: UIViewController {
 		task.resume()
 		
 	}
+	
+	/*
+	func getUserBooks () {
+		guard let requestURL = URL(string: userURL) else { return }
+		var request = URLRequest(url: requestURL)
+		
+		request.setValue(token, forHTTPHeaderField: "x-auth")
+		
+		let task = URLSession.shared.dataTask(with: request) { (data, res, error) in
+			print("Got books response")
+			guard let receivedData = data else { return }
+			do {
+				print(String(data: receivedData, encoding: .utf8)!)
+				let decoder = JSONDecoder()
+				User.currentUser.books = (try decoder.decode(BooksRes.self, from: receivedData)).books
+				DispatchQueue.main.async {
+					self.performSegue(withIdentifier: "login", sender: self)
+				}
+			} catch {
+				print("Error: \(error)")
+			}
+		}
+		task.resume()
+	}
+	// */
 	
 }

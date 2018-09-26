@@ -9,10 +9,6 @@
 import UIKit
 import KeychainAccess
 
-struct BooksRes : Codable {
-	var books = [BookSummary]()
-}
-
 class BookTableViewController: UITableViewController {
 	
 	var selectedShelf : Shelf?
