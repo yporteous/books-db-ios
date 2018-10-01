@@ -24,7 +24,9 @@ class BookTableViewController: UITableViewController {
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		
-		books = User.currentUser.books
+		books = User.currentUser.books.filter({ (book) -> Bool in
+			return self.selectedShelf?.name == "All" || book.shelf == self.selectedShelf?.name
+		})
 		self.navigationItem.title = selectedShelf?.name
 	}
 	
@@ -60,34 +62,5 @@ class BookTableViewController: UITableViewController {
 	override func viewDidAppear(_ animated: Bool) {
 		super.viewDidAppear(animated)
 		navigationController?.navigationBar.barTintColor = UIColor(hex3: selectedShelf!.colour)
-	}
-	
-	// MARK: - Loading books
-	
-	func loadBooks() {
-		
-		let token = keychain["token"]!
-		
-		guard let requestURL = URL(string: booksURL) else { return }
-		var request = URLRequest(url: requestURL)
-		
-		request.setValue(token, forHTTPHeaderField: "x-auth")
-		
-		let task = URLSession.shared.dataTask(with: request) { (data, res, error) in
-			guard let receivedData = data else { return }
-			do {
-				let decoder = JSONDecoder()
-				self.booksResponse = try decoder.decode(BooksRes.self, from: receivedData)
-				self.books = self.booksResponse.books.filter({ (book) -> Bool in
-					return self.selectedShelf?.name == "All" || book.shelf == self.selectedShelf?.name
-				})
-				DispatchQueue.main.async {
-					self.tableView.reloadData()
-				}
-			} catch {
-				print("Error: \(error)")
-			}
-		}
-		task.resume()
 	}
 }

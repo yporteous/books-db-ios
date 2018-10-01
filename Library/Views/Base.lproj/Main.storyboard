@@ -35,6 +35,11 @@
                     </tableView>
                     <navigationItem key="navigationItem" title="Bookshelves" id="pLl-2Z-Jto">
                         <barButtonItem key="backBarButtonItem" title="Shelves" id="akN-an-UFX"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="TTs-wk-aBi">
+                            <connections>
+                                <action selector="addNewShelfAction:" destination="7T1-mf-nIO" id="QpH-8h-nDT"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <segue destination="kSQ-gk-AEW" kind="show" identifier="goToShelf" id="D6m-lg-kfk"/>
@@ -42,7 +47,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="luQ-HK-wL3" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1732" y="1022"/>
+            <point key="canvasLocation" x="2671.1999999999998" y="1021.4392803598201"/>
         </scene>
         <!--Login View Controller-->
         <scene sceneID="Ehs-4A-pwN">
@@ -92,17 +97,107 @@
                     <connections>
                         <outlet property="passwordTextField" destination="5lh-7m-znD" id="CFz-Wh-Tvx"/>
                         <outlet property="usernameTextField" destination="Qv4-xk-Ioc" id="WMU-cy-BP1"/>
-                        <segue destination="dbH-HH-lNa" kind="show" identifier="login" id="0WN-kR-q7z"/>
+                        <segue destination="QGr-NH-4V8" kind="show" identifier="login" id="9bN-rx-uLF"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7id-qN-cfx" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-566" y="790"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--Profile-->
+        <scene sceneID="XaZ-N7-LJj">
+            <objects>
+                <viewController id="ZIS-gh-zcY" customClass="ProfileViewController" customModule="Library" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="7TH-N4-JiR">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Username" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cFq-Fw-v3V">
+                                <rect key="frame" x="129.5" y="50" width="116" height="32"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1bi-qU-2bf" userLabel="Left view">
+                                <rect key="frame" x="0.0" y="146" width="186" height="128"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ProfileImageShelves" translatesAutoresizingMaskIntoConstraints="NO" id="IJ6-gj-R9k" userLabel="Left image">
+                                        <rect key="frame" x="63" y="10" width="60" height="60"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="60" id="bjp-kL-1hs"/>
+                                            <constraint firstAttribute="width" constant="60" id="uxt-9s-oeA"/>
+                                        </constraints>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Shelves" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="e9V-3s-MhI">
+                                        <rect key="frame" x="63" y="97" width="60" height="21"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="IJ6-gj-R9k" firstAttribute="centerX" secondItem="1bi-qU-2bf" secondAttribute="centerX" id="4Dn-xX-mzz"/>
+                                    <constraint firstItem="IJ6-gj-R9k" firstAttribute="top" secondItem="1bi-qU-2bf" secondAttribute="top" constant="10" id="aau-Hz-Suz"/>
+                                    <constraint firstAttribute="height" constant="128" id="deG-d0-xn5"/>
+                                    <constraint firstItem="e9V-3s-MhI" firstAttribute="centerX" secondItem="1bi-qU-2bf" secondAttribute="centerX" id="nbL-aA-cQC"/>
+                                    <constraint firstAttribute="bottom" secondItem="e9V-3s-MhI" secondAttribute="bottom" constant="10" id="sJx-io-klg"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YDA-oj-7ct" userLabel="Right view">
+                                <rect key="frame" x="189" y="146" width="186" height="128"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ProfileImageShelves" translatesAutoresizingMaskIntoConstraints="NO" id="4qT-z9-KEd" userLabel="Right image">
+                                        <rect key="frame" x="63" y="10" width="60" height="60"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="60" id="4h6-R7-qzq"/>
+                                            <constraint firstAttribute="width" constant="60" id="ruj-78-gD4"/>
+                                        </constraints>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Books" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="keR-fn-qUC">
+                                        <rect key="frame" x="69.5" y="97" width="47.5" height="21"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="4qT-z9-KEd" firstAttribute="centerX" secondItem="YDA-oj-7ct" secondAttribute="centerX" id="20D-fZ-2HN"/>
+                                    <constraint firstItem="keR-fn-qUC" firstAttribute="centerX" secondItem="YDA-oj-7ct" secondAttribute="centerX" id="Rkb-MM-aFv"/>
+                                    <constraint firstAttribute="height" constant="128" id="ThY-fz-8mB"/>
+                                    <constraint firstItem="4qT-z9-KEd" firstAttribute="top" secondItem="YDA-oj-7ct" secondAttribute="top" constant="10" id="cCJ-Qs-xY7"/>
+                                    <constraint firstAttribute="bottom" secondItem="keR-fn-qUC" secondAttribute="bottom" constant="10" id="oUU-3E-Ymg"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="YDA-oj-7ct" firstAttribute="leading" secondItem="1bi-qU-2bf" secondAttribute="trailing" constant="3" id="ANH-Hw-W0K"/>
+                            <constraint firstItem="cFq-Fw-v3V" firstAttribute="centerX" secondItem="7TH-N4-JiR" secondAttribute="centerX" id="Bgn-se-6qz"/>
+                            <constraint firstItem="YDA-oj-7ct" firstAttribute="trailing" secondItem="lns-az-dAJ" secondAttribute="trailing" id="FP1-a7-YBy"/>
+                            <constraint firstItem="1bi-qU-2bf" firstAttribute="width" secondItem="YDA-oj-7ct" secondAttribute="width" id="Lph-AI-O15"/>
+                            <constraint firstItem="1bi-qU-2bf" firstAttribute="top" secondItem="cFq-Fw-v3V" secondAttribute="bottom" constant="64" id="Pkx-hE-DpW"/>
+                            <constraint firstItem="YDA-oj-7ct" firstAttribute="top" secondItem="cFq-Fw-v3V" secondAttribute="bottom" constant="64" id="Uce-OZ-mmX"/>
+                            <constraint firstItem="1bi-qU-2bf" firstAttribute="leading" secondItem="lns-az-dAJ" secondAttribute="leading" id="kF1-P0-6eR"/>
+                            <constraint firstItem="cFq-Fw-v3V" firstAttribute="top" secondItem="lns-az-dAJ" secondAttribute="top" constant="30" id="mh0-F1-heg"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="lns-az-dAJ"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Profile" image="TabBarProfile" id="Kh2-hm-9GB"/>
+                    <connections>
+                        <outlet property="numberOfBooksLabel" destination="keR-fn-qUC" id="0qw-Jh-UhN"/>
+                        <outlet property="numberOfShelvesLabel" destination="e9V-3s-MhI" id="zeB-EH-Bev"/>
+                        <outlet property="usernameLabel" destination="cFq-Fw-v3V" id="PjL-FY-CSF"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="AU2-jg-naA" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1888.8" y="335.98200899550227"/>
+        </scene>
+        <!--Bookshelves-->
         <scene sceneID="EXy-X3-gc0">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="dbH-HH-lNa" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Bookshelves" image="TabBarBookshelves" id="2DD-sV-q0e"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="XlJ-5Y-Pun">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
@@ -115,7 +210,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GbG-YR-aKP" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="953" y="1021"/>
+            <point key="canvasLocation" x="1892" y="1020.5397301349326"/>
         </scene>
         <!--Book Table View Controller-->
         <scene sceneID="a32-9v-HOp">
@@ -146,7 +241,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QTC-FP-gpS" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2526" y="1022"/>
+            <point key="canvasLocation" x="3464.8000000000002" y="1021.4392803598201"/>
         </scene>
         <!--Book Detail View Controller-->
         <scene sceneID="7gZ-bK-Izw">
@@ -247,7 +342,30 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bfK-dZ-aar" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3287" y="1021"/>
+            <point key="canvasLocation" x="4224.8000000000002" y="1020.5397301349326"/>
+        </scene>
+        <!--Tab Bar Controller-->
+        <scene sceneID="e9w-kC-g6f">
+            <objects>
+                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="QGr-NH-4V8" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="9yR-NX-9ua">
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="ZIS-gh-zcY" kind="relationship" relationship="viewControllers" id="dhN-8W-9sK"/>
+                        <segue destination="dbH-HH-lNa" kind="relationship" relationship="viewControllers" id="zvz-mU-Uac"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="1zs-rj-woE" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="844" y="553"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="ProfileImageShelves" width="60" height="60"/>
+        <image name="TabBarBookshelves" width="30" height="30"/>
+        <image name="TabBarProfile" width="30" height="30"/>
+    </resources>
 </document>

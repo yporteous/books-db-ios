@@ -55,4 +55,50 @@ class ShelfTableViewController: UITableViewController {
 		navigationController?.navigationBar.isTranslucent = true
 	}
 	
+	// MARK: - Adding
+	
+	@IBAction func addNewShelfAction(_ sender: Any) {
+		
+		var nameField = UITextField()
+		var colourField = UITextField() // for now
+		
+		let alert = UIAlertController(title: "Add new item", message: "", preferredStyle: .alert)
+		
+		let action = UIAlertAction(title: "Add item", style: .default) { (action) in
+			
+			let regex = "#[a-z0-9]{3}"
+			
+			let newShelf = Shelf()
+			newShelf.name = nameField.text!
+			
+			if colourField.text!.range(of: regex, options: .regularExpression, range: nil, locale: nil) != nil {
+				newShelf.colour = colourField.text!
+			} else {
+				newShelf.colour = "#ccc"
+			}
+			
+			self.shelves.append(newShelf)
+			User.currentUser.shelves.append(newShelf)
+			
+			self.tableView.reloadData()
+		}
+		
+		let cancelAction = UIAlertAction(title: "Cancel", style: .cancel)
+		
+		alert.addTextField { (alertTextField) in
+			alertTextField.placeholder = "Shelf name"
+			nameField = alertTextField
+		}
+		
+		alert.addTextField { (alertTextField) in
+			alertTextField.placeholder = "Shelf colour"
+			colourField = alertTextField
+		}
+		
+		alert.addAction(action)
+		alert.addAction(cancelAction)
+		present(alert, animated: true, completion: nil)
+		
+	}
+	
 }
