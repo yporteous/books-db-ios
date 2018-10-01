@@ -62,9 +62,9 @@ class ShelfTableViewController: UITableViewController {
 		var nameField = UITextField()
 		var colourField = UITextField() // for now
 		
-		let alert = UIAlertController(title: "Add new item", message: "", preferredStyle: .alert)
+		let alert = UIAlertController(title: "Add new shelf", message: "", preferredStyle: .alert)
 		
-		let action = UIAlertAction(title: "Add item", style: .default) { (action) in
+		let action = UIAlertAction(title: "Add shelf", style: .default) { (action) in
 			
 			let regex = "#[a-z0-9]{3}"
 			
