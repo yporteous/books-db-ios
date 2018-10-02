@@ -212,7 +212,7 @@
             </objects>
             <point key="canvasLocation" x="1892" y="1020.5397301349326"/>
         </scene>
-        <!--Book Table View Controller-->
+        <!--Shelf-->
         <scene sceneID="a32-9v-HOp">
             <objects>
                 <tableViewController id="kSQ-gk-AEW" customClass="BookTableViewController" customModule="Library" customModuleProvider="target" sceneMemberID="viewController">
@@ -235,8 +235,16 @@
                             <outlet property="delegate" destination="kSQ-gk-AEW" id="xnH-pX-SGZ"/>
                         </connections>
                     </tableView>
+                    <navigationItem key="navigationItem" title="Shelf" id="t4G-z0-fX0">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="pir-w4-NCb">
+                            <connections>
+                                <action selector="addNewShelfAction:" destination="kSQ-gk-AEW" id="Pbd-zz-sAw"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <segue destination="qPQ-G8-4vq" kind="show" identifier="openBookDetails" id="lsc-v7-UFr"/>
+                        <segue destination="nfM-VU-Cgg" kind="presentation" identifier="addBook" id="AG3-1w-GHX"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QTC-FP-gpS" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -342,7 +350,35 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bfK-dZ-aar" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4224.8000000000002" y="1020.5397301349326"/>
+            <point key="canvasLocation" x="4450" y="897"/>
+        </scene>
+        <!--Add Book Table View Controller-->
+        <scene sceneID="Ydg-Bj-IYD">
+            <objects>
+                <tableViewController id="nfM-VU-Cgg" customClass="AddBookTableViewController" customModule="Library" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="FUk-Lb-pFk">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="addBookCell" id="QYw-TR-gvg">
+                                <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="QYw-TR-gvg" id="rCf-br-xrU">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="nfM-VU-Cgg" id="lDv-5w-jmD"/>
+                            <outlet property="delegate" destination="nfM-VU-Cgg" id="VRP-Jr-P9s"/>
+                        </connections>
+                    </tableView>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Yxt-1L-RvV" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4461" y="1578"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="e9w-kC-g6f">
@@ -350,6 +386,7 @@
                 <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="QGr-NH-4V8" sceneMemberID="viewController">
                     <toolbarItems/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="9yR-NX-9ua">
+                        <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </tabBar>

@@ -51,11 +51,13 @@ class BookTableViewController: UITableViewController {
 	}
 	
 	override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-		let destinationVC = segue.destination as! BookDetailViewController
-		
-		if let indexPath = tableView.indexPathForSelectedRow {
-			destinationVC.selectedBookID = books[indexPath.row]._id
-			tableView.deselectRow(at: indexPath, animated: true)
+		if type(of: segue.destination) == BookDetailViewController.self {
+			let destinationVC = segue.destination as! BookDetailViewController
+			
+			if let indexPath = tableView.indexPathForSelectedRow {
+				destinationVC.selectedBookID = books[indexPath.row]._id
+				tableView.deselectRow(at: indexPath, animated: true)
+			}
 		}
 	}
 	
@@ -63,4 +65,11 @@ class BookTableViewController: UITableViewController {
 		super.viewDidAppear(animated)
 		navigationController?.navigationBar.barTintColor = UIColor(hex3: selectedShelf!.colour)
 	}
+	
+	// MARK: - Adding new books
+	
+	@IBAction func addNewShelfAction(_ sender: Any) {
+		performSegue(withIdentifier: "addBook", sender: sender)
+	}
+	
 }

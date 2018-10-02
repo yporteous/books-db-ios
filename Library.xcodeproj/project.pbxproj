@@ -22,6 +22,7 @@
 		D86884512159139E009332CB /* BookDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D86884502159139E009332CB /* BookDetailViewController.swift */; };
 		D87DD1CA21566F99008BECA0 /* BookSummary.swift in Sources */ = {isa = PBXBuildFile; fileRef = D87DD1C921566F99008BECA0 /* BookSummary.swift */; };
 		D8CDF809215B99A7006C35AB /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8CDF808215B99A7006C35AB /* ProfileViewController.swift */; };
+		D8D1B6EB216379D9001E039C /* AddBookTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8D1B6EA216379D9001E039C /* AddBookTableViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -42,6 +43,7 @@
 		D86884502159139E009332CB /* BookDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookDetailViewController.swift; sourceTree = "<group>"; };
 		D87DD1C921566F99008BECA0 /* BookSummary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookSummary.swift; sourceTree = "<group>"; };
 		D8CDF808215B99A7006C35AB /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		D8D1B6EA216379D9001E039C /* AddBookTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddBookTableViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -104,6 +106,7 @@
 				D827DD252155355600763C05 /* BookTableViewController.swift */,
 				D86884502159139E009332CB /* BookDetailViewController.swift */,
 				D8CDF808215B99A7006C35AB /* ProfileViewController.swift */,
+				D8D1B6EA216379D9001E039C /* AddBookTableViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -234,6 +237,7 @@
 				D827DD1F21550D2300763C05 /* Shelf.swift in Sources */,
 				D827DD082155077D00763C05 /* AppDelegate.swift in Sources */,
 				D86884512159139E009332CB /* BookDetailViewController.swift in Sources */,
+				D8D1B6EB216379D9001E039C /* AddBookTableViewController.swift in Sources */,
 				D827DD21215511D000763C05 /* ShelfTableViewController.swift in Sources */,
 				D84A1B3D215554A400C937EC /* User.swift in Sources */,
 				D8CDF809215B99A7006C35AB /* ProfileViewController.swift in Sources */,

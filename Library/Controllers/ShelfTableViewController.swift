@@ -55,9 +55,11 @@ class ShelfTableViewController: UITableViewController {
 		navigationController?.navigationBar.isTranslucent = true
 	}
 	
-	// MARK: - Adding
+	// MARK: - Adding new shelves
 	
 	@IBAction func addNewShelfAction(_ sender: Any) {
+		
+		// replace with new view?
 		
 		var nameField = UITextField()
 		var colourField = UITextField() // for now
