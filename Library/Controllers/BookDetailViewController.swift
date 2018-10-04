@@ -49,6 +49,7 @@ class BookDetailViewController: UITableViewController {
 	}
 	
 	// MARK: - Table view data source
+	// TODO: - check which fields are actually present
 	
 	override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
 		return tableFields.count
@@ -60,10 +61,9 @@ class BookDetailViewController: UITableViewController {
 		let detail = tableFields[indexPath.row]
 		
 		if let detailValue = currentBook?.properties[detail] {
-			cell.textLabel?.text = "\(detail): \(detailValue)"
+			// can use localisation to properly capitalise and translate at the same time
+			cell.textLabel?.text = "\(detail.capitalized): \(detailValue)"
 		}
-		
-		
 		
 		return cell
 	}
