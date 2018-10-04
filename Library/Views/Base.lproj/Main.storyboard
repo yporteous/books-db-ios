@@ -281,18 +281,31 @@
                                     <nil key="textColor"/>
                                     <nil key="highlightedColor"/>
                                 </label>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="k5U-Wp-son" userLabel="Separator 1">
+                                    <rect key="frame" x="8" y="211" width="359" height="1"/>
+                                    <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="1" id="8CJ-sr-pn0"/>
+                                    </constraints>
+                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                    <nil key="textColor"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
                             </subviews>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <constraints>
                                 <constraint firstItem="pWS-wO-UWY" firstAttribute="top" secondItem="E0S-ur-apA" secondAttribute="bottom" constant="65" id="1Dr-Ay-HZ4"/>
                                 <constraint firstItem="E0S-ur-apA" firstAttribute="top" secondItem="zVR-M7-F6m" secondAttribute="bottom" constant="12" id="2pl-jG-hWO"/>
                                 <constraint firstAttribute="trailing" secondItem="pWS-wO-UWY" secondAttribute="trailing" constant="16" id="3F7-4V-s3n"/>
-                                <constraint firstAttribute="bottom" secondItem="pWS-wO-UWY" secondAttribute="bottom" constant="52.5" id="EzL-kb-8AF"/>
+                                <constraint firstAttribute="bottom" secondItem="k5U-Wp-son" secondAttribute="bottom" constant="8" id="F4W-OK-g09"/>
+                                <constraint firstItem="k5U-Wp-son" firstAttribute="leading" secondItem="9Wd-2D-KuY" secondAttribute="leading" constant="8" id="G7t-2p-dcS"/>
                                 <constraint firstItem="zVR-M7-F6m" firstAttribute="leading" secondItem="9Wd-2D-KuY" secondAttribute="leading" constant="8" id="Gcm-PZ-ncy"/>
                                 <constraint firstAttribute="trailing" secondItem="zVR-M7-F6m" secondAttribute="trailing" constant="8" id="Icc-WJ-WMR"/>
                                 <constraint firstItem="pWS-wO-UWY" firstAttribute="leading" secondItem="9Wd-2D-KuY" secondAttribute="leading" constant="16" id="M6N-zq-F7o"/>
+                                <constraint firstItem="k5U-Wp-son" firstAttribute="top" relation="greaterThanOrEqual" secondItem="pWS-wO-UWY" secondAttribute="bottom" constant="16" id="WeA-QA-I9p"/>
                                 <constraint firstAttribute="trailing" secondItem="E0S-ur-apA" secondAttribute="trailing" constant="8" id="bg3-IN-Vi0"/>
                                 <constraint firstItem="zVR-M7-F6m" firstAttribute="top" secondItem="9Wd-2D-KuY" secondAttribute="top" constant="10" id="iE5-A3-U14"/>
+                                <constraint firstAttribute="trailing" secondItem="k5U-Wp-son" secondAttribute="trailing" constant="8" id="jtY-Bf-AYO"/>
                                 <constraint firstItem="E0S-ur-apA" firstAttribute="leading" secondItem="9Wd-2D-KuY" secondAttribute="leading" constant="8" id="x0P-b5-iir"/>
                             </constraints>
                         </view>

@@ -25,73 +25,61 @@ class BookDetailViewController: UITableViewController {
 		
 	// data
 	var selectedBookID : String = ""
-	var currentBook = Book()
+	var currentBook : Book?
 	var detailArray = [(String, String)]()
+	var tableFields = [
+		"series",
+		"publisher",
+		"year"
+	]
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		bookURL = defaults.string(forKey: "baseURL")! + "/books/"
 		
-		//print(selectedBookID)
-		getBook()
+		currentBook = Book(byID: selectedBookID, withToken: keychain["token"]!) { (gotBook, book) in
+			if gotBook {
+				DispatchQueue.main.async {
+					self.updateHeaderFields()
+				}
+			} else {
+				print("Could not get book")
+			}
+		}
 	}
 	
 	// MARK: - Table view data source
 	
 	override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-		return detailArray.count
+		return tableFields.count
 	}
 	
 	override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 		let cell = tableView.dequeueReusableCell(withIdentifier: "detailCell", for: indexPath)
 		
-		let detail = detailArray[indexPath.row]
+		let detail = tableFields[indexPath.row]
 		
-		cell.textLabel?.text = "\(detail.0): \(detail.1)"
+		if let detailValue = currentBook?.properties[detail] {
+			cell.textLabel?.text = "\(detail): \(detailValue)"
+		}
+		
+		
 		
 		return cell
 	}
 	
 	// MARK: - Networking
 	
-	func getBook() {
-		let token = keychain["token"]
-		
-		guard let requestURL = URL(string: bookURL + selectedBookID) else { return }
-		var request = URLRequest(url: requestURL)
-		
-		request.setValue(token, forHTTPHeaderField: "x-auth")
-		
-		let task = URLSession.shared.dataTask(with: request) { (data, res, error) in
-			guard let receivedData = data else { return }
-			do {
-				let decoder = JSONDecoder()
-				self.currentBook = try decoder.decode(Book.self, from: receivedData)
-				self.detailArray = Mirror(reflecting: self.currentBook.details)
-					.children
-					.compactMap({ (child) -> (String, String) in
-						let value = "\(child.value)"
-						return (child.label!.capitalized, value)
-					})
-				
-				DispatchQueue.main.async {
-					self.updateHeaderFields()
-					self.tableView.reloadData()
-				}
-				
-			} catch {
-				print("Error: \(error)")
-			}
-		}
-		task.resume()
-	}
-	
 	// MARK: - Tabel view header data and layout
 	
 	func updateHeaderFields() {
-		titleLabel.text = currentBook.title
-		authorLabel.text = currentBook.author
-		summaryLabel.text = currentBook.summary
+		guard let book = currentBook?.properties else {
+			//also return to previous view as this means the book data is invalid
+			return
+		}
+		titleLabel.text = book["title"] as? String
+		authorLabel.text = book["author"] as? String
+		summaryLabel.text = book["summary"] as? String
 	}
 	
 	override func viewDidLayoutSubviews() {

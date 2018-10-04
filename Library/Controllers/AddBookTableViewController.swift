@@ -10,7 +10,7 @@ import UIKit
 
 class AddBookTableViewController: UITableViewController {
 	
-	var selectedBook = Book()
+	var selectedBook : Book?
 	
 	let bookKeys = [
 		["title", "author", "shelf"],

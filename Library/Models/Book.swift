@@ -10,52 +10,28 @@ import Foundation
 
 // try using Codable to create these?
 
-class Book : Decodable {
-	var title : String
-	var author : String
-	//var series : String
-	//var year : Int
-	//var publisher : String
-	var details : Details
+class Book {
+	let defaults = UserDefaults.standard
 	
-	var summary : String // UITextView?
-	var tags : String
-	var shelf : String
+	var properties : [String: Any] = [:]
 	
-	enum CodingKeys: String, CodingKey {
-		case title
-		case author
-		case summary
-		case tags
-		case shelf
-		case details
-		case series
-		case year
-		case publisher
+	init(byID id : String, withToken token : String, completion: @escaping (Bool, [String: Any]) -> Void) {
+		let bookURL = defaults.string(forKey: "baseURL")! + "/books/"
+		guard let requestURL = URL(string: bookURL + id) else { return }
+		var request = URLRequest(url: requestURL)
+		
+		request.setValue(token, forHTTPHeaderField: "x-auth")
+		
+		let task = URLSession.shared.dataTask(with: request) { (data, res, error) in
+			guard let receivedData = data else { return }
+			
+			if let bookDictionary = (try? JSONSerialization.jsonObject(with: receivedData)) {
+				self.properties = bookDictionary as! [String: Any]
+				completion(true, bookDictionary as! [String: Any])
+			} else {
+				completion(false, ["title": "none"])
+			}
+		}
+		task.resume()
 	}
-	
-	init() {
-		title = ""
-		author = ""
-		summary = ""
-		tags = ""
-		shelf = ""
-		details = Details()
-	}
-	
-	required init(from decoder: Decoder) throws {
-		let values = try decoder.container(keyedBy: CodingKeys.self)
-		title = try values.decode(String.self, forKey: .title)
-		author = try values.decode(String.self, forKey: .author)
-		summary = try values.decode(String.self, forKey: .summary)
-		tags = try values.decode(String.self, forKey: .tags)
-		shelf = try values.decode(String.self, forKey: .shelf)
-		details = try Details(from: decoder)
-	}
-}
-
-struct Details : Decodable {
-	var series : String = ""
-	var year : Int = 0
-	var publisher : String = ""
 }
