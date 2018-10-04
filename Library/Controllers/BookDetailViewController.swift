@@ -59,11 +59,19 @@ class BookDetailViewController: UITableViewController {
 		let cell = tableView.dequeueReusableCell(withIdentifier: "detailCell", for: indexPath)
 		
 		let detail = tableFields[indexPath.row]
+		let attrs = [
+			NSAttributedString.Key.font: UIFont.boldSystemFont(ofSize: cell.textLabel!.font.pointSize)
+		]
+		
+		// can use localisation to properly capitalise and translate at the same time
+		let attributedLabel = NSMutableAttributedString(string: "\(detail.capitalized): ", attributes: attrs)
 		
 		if let detailValue = currentBook?.properties[detail] {
-			// can use localisation to properly capitalise and translate at the same time
-			cell.textLabel?.text = "\(detail.capitalized): \(detailValue)"
+			let attributedValue = NSMutableAttributedString(string: "\(detailValue)")
+			attributedLabel.append(attributedValue)
 		}
+		
+		cell.textLabel?.attributedText = attributedLabel
 		
 		return cell
 	}
