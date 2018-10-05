@@ -21,6 +21,8 @@
 		D84A1B3D215554A400C937EC /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = D84A1B3C215554A300C937EC /* User.swift */; };
 		D86884512159139E009332CB /* BookDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D86884502159139E009332CB /* BookDetailViewController.swift */; };
 		D87DD1CA21566F99008BECA0 /* BookSummary.swift in Sources */ = {isa = PBXBuildFile; fileRef = D87DD1C921566F99008BECA0 /* BookSummary.swift */; };
+		D8CC54B7216743C500F25015 /* AddEditCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8CC54B5216743C500F25015 /* AddEditCell.swift */; };
+		D8CC54B8216743C500F25015 /* AddEditCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D8CC54B6216743C500F25015 /* AddEditCell.xib */; };
 		D8CDF809215B99A7006C35AB /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8CDF808215B99A7006C35AB /* ProfileViewController.swift */; };
 		D8D1B6EB216379D9001E039C /* AddBookTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8D1B6EA216379D9001E039C /* AddBookTableViewController.swift */; };
 /* End PBXBuildFile section */
@@ -42,6 +44,8 @@
 		D84A1B3C215554A300C937EC /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		D86884502159139E009332CB /* BookDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookDetailViewController.swift; sourceTree = "<group>"; };
 		D87DD1C921566F99008BECA0 /* BookSummary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookSummary.swift; sourceTree = "<group>"; };
+		D8CC54B5216743C500F25015 /* AddEditCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddEditCell.swift; sourceTree = "<group>"; };
+		D8CC54B6216743C500F25015 /* AddEditCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddEditCell.xib; sourceTree = "<group>"; };
 		D8CDF808215B99A7006C35AB /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		D8D1B6EA216379D9001E039C /* AddBookTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddBookTableViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -114,6 +118,7 @@
 		D827DD1A2155088B00763C05 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				D8CC54B22167437D00F25015 /* AddEditCell */,
 				D827DD0B2155077D00763C05 /* Main.storyboard */,
 			);
 			path = Views;
@@ -136,6 +141,15 @@
 				D827DD23215515CB00763C05 /* UIColor+hexcodes.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		D8CC54B22167437D00F25015 /* AddEditCell */ = {
+			isa = PBXGroup;
+			children = (
+				D8CC54B5216743C500F25015 /* AddEditCell.swift */,
+				D8CC54B6216743C500F25015 /* AddEditCell.xib */,
+			);
+			path = AddEditCell;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -200,6 +214,7 @@
 				D827DD122155077E00763C05 /* LaunchScreen.storyboard in Resources */,
 				D827DD0F2155077E00763C05 /* Assets.xcassets in Resources */,
 				D827DD0D2155077D00763C05 /* Main.storyboard in Resources */,
+				D8CC54B8216743C500F25015 /* AddEditCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -242,6 +257,7 @@
 				D84A1B3D215554A400C937EC /* User.swift in Sources */,
 				D8CDF809215B99A7006C35AB /* ProfileViewController.swift in Sources */,
 				D827DD24215515CB00763C05 /* UIColor+hexcodes.swift in Sources */,
+				D8CC54B7216743C500F25015 /* AddEditCell.swift in Sources */,
 				D827DD262155355600763C05 /* BookTableViewController.swift in Sources */,
 				D827DD1D215508CA00763C05 /* Book.swift in Sources */,
 				D87DD1CA21566F99008BECA0 /* BookSummary.swift in Sources */,

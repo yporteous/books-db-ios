@@ -51,7 +51,7 @@ class BookTableViewController: UITableViewController {
 	}
 	
 	override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-		if type(of: segue.destination) == BookDetailViewController.self {
+		if segue.identifier == "openBookDetails" {
 			let destinationVC = segue.destination as! BookDetailViewController
 			
 			if let indexPath = tableView.indexPathForSelectedRow {
