@@ -8,26 +8,38 @@
 
 import UIKit
 
+struct CellModel {
+	var field : String
+	var value : String
+	var type : cellType
+}
+
+enum cellType {
+	case textField
+	case textView
+}
+
 class AddBookTableViewController: UITableViewController {
 	
 	//var selectedBook : Book?
 	var bookTableDelegate : BookTableViewController?
 	
-	let bookKeys = [
-		"title",
-		"author",
-		"shelf",
-		"series",
-		"year",
-		"publisher",
-		"tags",
-		"summary"
+	let bookKeys : [CellModel] = [
+		CellModel(field: "title", value: "", type: .textField),
+		CellModel(field: "author", value: "", type: .textField),
+		CellModel(field: "shelf", value: "", type: .textField),
+		CellModel(field: "series", value: "", type: .textField),
+		CellModel(field: "year", value: "", type: .textField),
+		CellModel(field: "publisher", value: "", type: .textField),
+		CellModel(field: "tags", value: "", type: .textField),
+		CellModel(field: "summary", value: "", type: .textView)
 	]
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		
-		tableView.register(UINib(nibName: "AddEditCell", bundle: nil), forCellReuseIdentifier: "addBookCell")
+		tableView.register(UINib(nibName: "AddEditCell", bundle: nil), forCellReuseIdentifier: "addBookCellField")
+		tableView.register(UINib(nibName: "SummaryCell", bundle: nil), forCellReuseIdentifier: "addBookCellView")
 	}
 	
 	@IBAction func cancelButtonPressed(_ sender: Any) {
@@ -43,16 +55,22 @@ class AddBookTableViewController: UITableViewController {
 	}
 	
 	override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-		let cell = tableView.dequeueReusableCell(withIdentifier: "addBookCell", for: indexPath) as! AddEditCell
 		
-		// use localisation
-		cell.fieldLabel.text = bookKeys[indexPath.row].capitalized
+		let currentCellModel = bookKeys[indexPath.row]
 		
-		//cell.textLabel!.text = bookKeys[indexPath.row]
-		
-		// Configure the cell...
-		
-		return cell
+		if currentCellModel.type == .textField {
+			let cell = tableView.dequeueReusableCell(withIdentifier: "addBookCellField", for: indexPath) as! AddEditCell
+			
+			// use localisation
+			cell.fieldLabel.text = currentCellModel.field.capitalized
+			
+			return cell
+		} else {
+			let cell = tableView.dequeueReusableCell(withIdentifier: "addBookCellView", for: indexPath) as! SummaryCell
+			
+			cell.fieldLabel.text = currentCellModel.field.capitalized
+			
+			return cell
+		}
 	}
-	
 }

@@ -17,6 +17,8 @@
 		D827DD21215511D000763C05 /* ShelfTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D827DD20215511D000763C05 /* ShelfTableViewController.swift */; };
 		D827DD24215515CB00763C05 /* UIColor+hexcodes.swift in Sources */ = {isa = PBXBuildFile; fileRef = D827DD23215515CB00763C05 /* UIColor+hexcodes.swift */; };
 		D827DD262155355600763C05 /* BookTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D827DD252155355600763C05 /* BookTableViewController.swift */; };
+		D82AE59E2168CD10000695DA /* SummaryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D82AE59C2168CD10000695DA /* SummaryCell.swift */; };
+		D82AE59F2168CD10000695DA /* SummaryCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D82AE59D2168CD10000695DA /* SummaryCell.xib */; };
 		D84A1B3B21553DBA00C937EC /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D84A1B3A21553DBA00C937EC /* LoginViewController.swift */; };
 		D84A1B3D215554A400C937EC /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = D84A1B3C215554A300C937EC /* User.swift */; };
 		D86884512159139E009332CB /* BookDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D86884502159139E009332CB /* BookDetailViewController.swift */; };
@@ -40,6 +42,8 @@
 		D827DD20215511D000763C05 /* ShelfTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShelfTableViewController.swift; sourceTree = "<group>"; };
 		D827DD23215515CB00763C05 /* UIColor+hexcodes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+hexcodes.swift"; sourceTree = "<group>"; };
 		D827DD252155355600763C05 /* BookTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookTableViewController.swift; sourceTree = "<group>"; };
+		D82AE59C2168CD10000695DA /* SummaryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SummaryCell.swift; sourceTree = "<group>"; };
+		D82AE59D2168CD10000695DA /* SummaryCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SummaryCell.xib; sourceTree = "<group>"; };
 		D84A1B3A21553DBA00C937EC /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		D84A1B3C215554A300C937EC /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		D86884502159139E009332CB /* BookDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookDetailViewController.swift; sourceTree = "<group>"; };
@@ -118,8 +122,9 @@
 		D827DD1A2155088B00763C05 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				D8CC54B22167437D00F25015 /* AddEditCell */,
 				D827DD0B2155077D00763C05 /* Main.storyboard */,
+				D8CC54B22167437D00F25015 /* AddEditCell */,
+				D82AE59B2168CCFA000695DA /* SummaryCell */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -141,6 +146,15 @@
 				D827DD23215515CB00763C05 /* UIColor+hexcodes.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		D82AE59B2168CCFA000695DA /* SummaryCell */ = {
+			isa = PBXGroup;
+			children = (
+				D82AE59C2168CD10000695DA /* SummaryCell.swift */,
+				D82AE59D2168CD10000695DA /* SummaryCell.xib */,
+			);
+			path = SummaryCell;
 			sourceTree = "<group>";
 		};
 		D8CC54B22167437D00F25015 /* AddEditCell */ = {
@@ -215,6 +229,7 @@
 				D827DD0F2155077E00763C05 /* Assets.xcassets in Resources */,
 				D827DD0D2155077D00763C05 /* Main.storyboard in Resources */,
 				D8CC54B8216743C500F25015 /* AddEditCell.xib in Resources */,
+				D82AE59F2168CD10000695DA /* SummaryCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -250,6 +265,7 @@
 			files = (
 				D84A1B3B21553DBA00C937EC /* LoginViewController.swift in Sources */,
 				D827DD1F21550D2300763C05 /* Shelf.swift in Sources */,
+				D82AE59E2168CD10000695DA /* SummaryCell.swift in Sources */,
 				D827DD082155077D00763C05 /* AppDelegate.swift in Sources */,
 				D86884512159139E009332CB /* BookDetailViewController.swift in Sources */,
 				D8D1B6EB216379D9001E039C /* AddBookTableViewController.swift in Sources */,
