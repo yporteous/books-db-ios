@@ -28,7 +28,25 @@ class User : Codable {
 		if let books = try container.decodeIfPresent([BookSummary].self, forKey: .books) {
 			self.books = books
 		}
-
+	}
+	
+	func refreshBooks(withToken token : String) {
+		let defaults = UserDefaults.standard
+		guard let requestURL = URL(string: defaults.string(forKey: "baseURL")! + "/books/") else { return }
+		var request = URLRequest(url: requestURL)
+		
+		request.setValue(token, forHTTPHeaderField: "x-auth")
+		
+		let task = URLSession.shared.dataTask(with: request) { (data, res, error) in
+			guard let receivedData = data else { return }
+			do {
+				// completion handler?
+				User.currentUser.books = (try JSONDecoder().decode(BooksRes.self, from: receivedData)).books
+			} catch {
+				print("Error: \(error)")
+			}
+		}
+		task.resume()
 	}
 	
 	static var currentUser = User()

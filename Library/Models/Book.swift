@@ -15,7 +15,11 @@ class Book {
 	
 	var properties : [String: Any] = [:]
 	
-	init(byID id : String, withToken token : String, completion: @escaping (Bool, [String: Any]) -> Void) {
+	init() {}
+	
+	convenience init(byID id : String, withToken token : String, completion: @escaping (Bool, [String: Any]) -> Void) {
+		self.init()
+		
 		let bookURL = defaults.string(forKey: "baseURL")! + "/books/"
 		guard let requestURL = URL(string: bookURL + id) else { return }
 		var request = URLRequest(url: requestURL)
@@ -34,4 +38,34 @@ class Book {
 		}
 		task.resume()
 	}
+	
+	func saveAsNewBook(withToken token : String) {
+		print("Saving new book")
+		
+		guard let requestURL = URL(string: defaults.string(forKey: "baseURL")! + "/books/") else { return }
+		var request = URLRequest(url: requestURL)
+		
+		request.setValue(token, forHTTPHeaderField: "x-auth")
+		request.httpMethod = "POST"
+		request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+		
+		//set body to:
+		print(properties)
+		
+		do {
+			request.httpBody = try JSONSerialization.data(withJSONObject: properties)
+		} catch {
+			print("could not encode json")
+		}
+		
+		let task = URLSession.shared.dataTask(with: request) { (data, res, error) in
+			guard data != nil else {
+				return
+			}
+			//User.currentUser.refreshBooks(withToken: token)
+		}
+		task.resume()
+		
+	}
+	
 }

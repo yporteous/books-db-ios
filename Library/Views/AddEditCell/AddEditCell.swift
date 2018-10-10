@@ -13,8 +13,6 @@ class AddEditCell: UITableViewCell {
 	@IBOutlet var fieldLabel: UILabel!
 	@IBOutlet var valueTextField: UITextField!
 	
-	
-	
 	override func awakeFromNib() {
 		super.awakeFromNib()
 		// Initialization code

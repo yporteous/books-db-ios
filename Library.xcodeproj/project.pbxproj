@@ -19,6 +19,8 @@
 		D827DD262155355600763C05 /* BookTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D827DD252155355600763C05 /* BookTableViewController.swift */; };
 		D82AE59E2168CD10000695DA /* SummaryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D82AE59C2168CD10000695DA /* SummaryCell.swift */; };
 		D82AE59F2168CD10000695DA /* SummaryCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D82AE59D2168CD10000695DA /* SummaryCell.xib */; };
+		D8408C9B216BB2DA00C416AF /* PickerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8408C99216BB2DA00C416AF /* PickerCell.swift */; };
+		D8408C9C216BB2DA00C416AF /* PickerCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D8408C9A216BB2DA00C416AF /* PickerCell.xib */; };
 		D84A1B3B21553DBA00C937EC /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D84A1B3A21553DBA00C937EC /* LoginViewController.swift */; };
 		D84A1B3D215554A400C937EC /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = D84A1B3C215554A300C937EC /* User.swift */; };
 		D86884512159139E009332CB /* BookDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D86884502159139E009332CB /* BookDetailViewController.swift */; };
@@ -44,6 +46,8 @@
 		D827DD252155355600763C05 /* BookTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookTableViewController.swift; sourceTree = "<group>"; };
 		D82AE59C2168CD10000695DA /* SummaryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SummaryCell.swift; sourceTree = "<group>"; };
 		D82AE59D2168CD10000695DA /* SummaryCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SummaryCell.xib; sourceTree = "<group>"; };
+		D8408C99216BB2DA00C416AF /* PickerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickerCell.swift; sourceTree = "<group>"; };
+		D8408C9A216BB2DA00C416AF /* PickerCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PickerCell.xib; sourceTree = "<group>"; };
 		D84A1B3A21553DBA00C937EC /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		D84A1B3C215554A300C937EC /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		D86884502159139E009332CB /* BookDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookDetailViewController.swift; sourceTree = "<group>"; };
@@ -124,6 +128,7 @@
 			children = (
 				D827DD0B2155077D00763C05 /* Main.storyboard */,
 				D8CC54B22167437D00F25015 /* AddEditCell */,
+				D8408C98216BB29700C416AF /* PickerCell */,
 				D82AE59B2168CCFA000695DA /* SummaryCell */,
 			);
 			path = Views;
@@ -155,6 +160,15 @@
 				D82AE59D2168CD10000695DA /* SummaryCell.xib */,
 			);
 			path = SummaryCell;
+			sourceTree = "<group>";
+		};
+		D8408C98216BB29700C416AF /* PickerCell */ = {
+			isa = PBXGroup;
+			children = (
+				D8408C99216BB2DA00C416AF /* PickerCell.swift */,
+				D8408C9A216BB2DA00C416AF /* PickerCell.xib */,
+			);
+			path = PickerCell;
 			sourceTree = "<group>";
 		};
 		D8CC54B22167437D00F25015 /* AddEditCell */ = {
@@ -228,6 +242,7 @@
 				D827DD122155077E00763C05 /* LaunchScreen.storyboard in Resources */,
 				D827DD0F2155077E00763C05 /* Assets.xcassets in Resources */,
 				D827DD0D2155077D00763C05 /* Main.storyboard in Resources */,
+				D8408C9C216BB2DA00C416AF /* PickerCell.xib in Resources */,
 				D8CC54B8216743C500F25015 /* AddEditCell.xib in Resources */,
 				D82AE59F2168CD10000695DA /* SummaryCell.xib in Resources */,
 			);
@@ -277,6 +292,7 @@
 				D827DD262155355600763C05 /* BookTableViewController.swift in Sources */,
 				D827DD1D215508CA00763C05 /* Book.swift in Sources */,
 				D87DD1CA21566F99008BECA0 /* BookSummary.swift in Sources */,
+				D8408C9B216BB2DA00C416AF /* PickerCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
