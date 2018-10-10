@@ -18,6 +18,11 @@ class PickerCell: UITableViewCell, UIPickerViewDataSource {
 	override func awakeFromNib() {
 		super.awakeFromNib()
 		// Initialization code
+		
+		shelfPicker.layer.borderWidth = 0.5
+		shelfPicker.layer.borderColor = UIColor.lightGray.cgColor
+		shelfPicker.layer.cornerRadius = 8
+		
 	}
 	
 	override func setSelected(_ selected: Bool, animated: Bool) {
