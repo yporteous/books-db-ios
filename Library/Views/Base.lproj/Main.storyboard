@@ -238,7 +238,7 @@
                     <navigationItem key="navigationItem" title="Shelf" id="t4G-z0-fX0">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="pir-w4-NCb">
                             <connections>
-                                <action selector="addNewShelfAction:" destination="kSQ-gk-AEW" id="Pbd-zz-sAw"/>
+                                <action selector="addNewBookAction:" destination="kSQ-gk-AEW" id="YUD-xR-xz4"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>

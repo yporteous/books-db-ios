@@ -44,6 +44,13 @@ class BookTableViewController: UITableViewController {
 		return cell
 	}
 	
+	func reloadBooks() {
+		books = User.currentUser.books.filter({ (book) -> Bool in
+			return self.selectedShelf?.name == "All" || book.shelf == self.selectedShelf?.name
+		})
+		tableView.reloadData()
+	}
+	
 	// MARK: - Navigation
 	
 	override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -58,6 +65,9 @@ class BookTableViewController: UITableViewController {
 				destinationVC.selectedBookID = books[indexPath.row]._id
 				tableView.deselectRow(at: indexPath, animated: true)
 			}
+		} else if segue.identifier == "addBook" {
+			let destinationVC = (segue.destination as! UINavigationController).topViewController as! AddBookTableViewController
+			destinationVC.bookTableDelegate = self
 		}
 	}
 	
@@ -68,7 +78,7 @@ class BookTableViewController: UITableViewController {
 	
 	// MARK: - Adding new books
 	
-	@IBAction func addNewShelfAction(_ sender: Any) {
+	@IBAction func addNewBookAction(_ sender: Any) {
 		performSegue(withIdentifier: "addBook", sender: sender)
 	}
 	

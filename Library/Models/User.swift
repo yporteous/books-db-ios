@@ -30,7 +30,7 @@ class User : Codable {
 		}
 	}
 	
-	func refreshBooks(withToken token : String) {
+	func refreshBooks(withToken token : String, completion: @escaping (Bool) -> Void) {
 		let defaults = UserDefaults.standard
 		guard let requestURL = URL(string: defaults.string(forKey: "baseURL")! + "/books/") else { return }
 		var request = URLRequest(url: requestURL)
@@ -42,8 +42,10 @@ class User : Codable {
 			do {
 				// completion handler?
 				User.currentUser.books = (try JSONDecoder().decode(BooksRes.self, from: receivedData)).books
+				completion(true)
 			} catch {
 				print("Error: \(error)")
+				completion(false)
 			}
 		}
 		task.resume()

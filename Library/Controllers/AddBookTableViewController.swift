@@ -21,13 +21,15 @@ enum cellType {
 	case picker
 }
 
-class AddBookTableViewController: UITableViewController, UITextFieldDelegate, UITextViewDelegate, UIPickerViewDelegate {
+class AddBookTableViewController: UITableViewController, UITextFieldDelegate, UITextViewDelegate, UIPickerViewDelegate, UIPickerViewDataSource {
 	
 	let keychain = Keychain(service: "com.younusporteous.library")
 	
 	//var selectedBook : Book?
 	var bookTableDelegate : BookTableViewController?
 	var currentUser = User.currentUser
+	
+	var pickerRow : Int?
 	
 	var bookKeys : [CellModel] = [
 		CellModel(field: "title", value: "", type: .textField),
@@ -62,7 +64,16 @@ class AddBookTableViewController: UITableViewController, UITextFieldDelegate, UI
 		
 		let currentCellModel = bookKeys[indexPath.row]
 		
-		if currentCellModel.type == .textField {
+		if currentCellModel.type == .textView {
+			let cell = tableView.dequeueReusableCell(withIdentifier: "addBookCellView", for: indexPath) as! SummaryCell
+			
+			cell.fieldLabel.text = currentCellModel.field.capitalized
+			cell.valueTextView.tag = indexPath.row
+			
+			cell.valueTextView.delegate = self
+			
+			return cell
+		} else {
 			let cell = tableView.dequeueReusableCell(withIdentifier: "addBookCellField", for: indexPath) as! AddEditCell
 			
 			// use localisation
@@ -72,29 +83,26 @@ class AddBookTableViewController: UITableViewController, UITextFieldDelegate, UI
 			// set self as delegate to get changes
 			cell.valueTextField.delegate = self
 			
-			return cell
-			
-		} else if currentCellModel.type == .picker {
-			let cell = tableView.dequeueReusableCell(withIdentifier: "addBookCellPicker", for: indexPath) as! PickerCell
-			
-			cell.fieldLabel.text = currentCellModel.field.capitalized
-			cell.shelfPicker.tag = indexPath.row
-			
-			cell.shelfPicker.delegate = self
-			cell.shelfPicker.dataSource = cell
-			
-			return cell
-			
-		} else {
-			let cell = tableView.dequeueReusableCell(withIdentifier: "addBookCellView", for: indexPath) as! SummaryCell
-			
-			cell.fieldLabel.text = currentCellModel.field.capitalized
-			cell.valueTextView.tag = indexPath.row
-			
-			cell.valueTextView.delegate = self
+			// additional setup for picker
+			if currentCellModel.type == .picker {
+				let shelfPicker = UIPickerView()
+				shelfPicker.delegate = self
+				shelfPicker.dataSource = self
+				shelfPicker.tag = indexPath.row
+				pickerRow = indexPath.row
+				cell.valueTextField.inputView = shelfPicker
+				cell.valueTextField.tintColor = .clear
+				
+				cell.valueTextField.rightView = {
+					let label = UILabel(frame: CGRect(x: 0, y: 0, width: 20, height: 20))
+					label.text = "∨"
+					label.textColor = UIColor.lightGray
+					return label
+				}()
+				cell.valueTextField.rightViewMode = .always
+			}
 			
 			return cell
-			
 		}
 	}
 	
@@ -102,6 +110,9 @@ class AddBookTableViewController: UITableViewController, UITextFieldDelegate, UI
 	
 	//TextField
 	func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+		if textField.tag == pickerRow {
+			return false
+		}
 		bookKeys[textField.tag].value = (textField.text as NSString?)!.replacingCharacters(in: range, with: string)
 		return true
 	}
@@ -113,19 +124,29 @@ class AddBookTableViewController: UITableViewController, UITextFieldDelegate, UI
 	
 	//PickerView
 	func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+		let indexPath = IndexPath(row: pickerView.tag, section: 0)
+		
+		
+		(tableView.cellForRow(at: indexPath) as! AddEditCell).valueTextField.text = currentUser.shelves[row].name
 		bookKeys[pickerView.tag].value = currentUser.shelves[row].name
-		print("Shelf is now \(bookKeys[pickerView.tag].value)")
+		print("Shelf is now '\(bookKeys[pickerView.tag].value)'")
 	}
 	
 	func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
 		return currentUser.shelves[row].name
 	}
 	
+	func numberOfComponents(in pickerView: UIPickerView) -> Int {
+		return 1
+	}
+	
+	func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+		return currentUser.shelves.count
+	}
+	
 	// MARK: - Save book
 	
-	@IBAction func saveButtonPressed(_ sender: Any) {
-		print("save pressed")
-		
+	@IBAction func saveButtonPressed(_ sender: Any) {		
 		let newBook = Book()
 		
 		for field in bookKeys {
@@ -134,13 +155,21 @@ class AddBookTableViewController: UITableViewController, UITextFieldDelegate, UI
 		// validate missing values
 		// validate incompatible values (year -> number)
 		
-		newBook.saveAsNewBook(withToken: keychain["token"]!)
+		newBook.saveAsNewBook(withToken: keychain["token"]!) { (completed) in
+			if completed {
+				User.currentUser.refreshBooks(withToken: self.keychain["token"]!, completion: { (completed) in
+					if completed {
+						DispatchQueue.main.sync {
+							// need to check which delegate to refresh for when editing is enabled
+							self.dismiss(animated: true)
+							if let delegate = self.bookTableDelegate {
+								delegate.reloadBooks()
+							}
+						}
+					}
+				})
+			}
+		}
 	}
-	
-	// MARK: - PickerView delegate methods
-	
-	
-	
-	
 	
 }
