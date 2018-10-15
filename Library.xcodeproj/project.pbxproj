@@ -52,6 +52,7 @@
 		D84A1B3C215554A300C937EC /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		D86884502159139E009332CB /* BookDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookDetailViewController.swift; sourceTree = "<group>"; };
 		D87DD1C921566F99008BECA0 /* BookSummary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookSummary.swift; sourceTree = "<group>"; };
+		D8AF68EF21748AEB00A29736 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		D8CC54B5216743C500F25015 /* AddEditCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddEditCell.swift; sourceTree = "<group>"; };
 		D8CC54B6216743C500F25015 /* AddEditCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddEditCell.xib; sourceTree = "<group>"; };
 		D8CDF808215B99A7006C35AB /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
@@ -106,6 +107,7 @@
 				D827DD0E2155077E00763C05 /* Assets.xcassets */,
 				D827DD102155077E00763C05 /* LaunchScreen.storyboard */,
 				D827DD132155077E00763C05 /* Info.plist */,
+				D8AF68EF21748AEB00A29736 /* README.md */,
 			);
 			path = Library;
 			sourceTree = "<group>";

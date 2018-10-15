@@ -365,7 +365,7 @@
             </objects>
             <point key="canvasLocation" x="4450" y="897"/>
         </scene>
-        <!--Add Book Table View Controller-->
+        <!--Add New Book-->
         <scene sceneID="Ydg-Bj-IYD">
             <objects>
                 <tableViewController id="nfM-VU-Cgg" customClass="AddBookTableViewController" customModule="Library" customModuleProvider="target" sceneMemberID="viewController">
@@ -404,7 +404,7 @@
                             <outlet property="delegate" destination="nfM-VU-Cgg" id="VRP-Jr-P9s"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="IPI-aW-Wun">
+                    <navigationItem key="navigationItem" title="Add New Book" id="IPI-aW-Wun">
                         <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="RFq-hc-5ve">
                             <connections>
                                 <action selector="cancelButtonPressed:" destination="nfM-VU-Cgg" id="Gh1-aF-lxF"/>

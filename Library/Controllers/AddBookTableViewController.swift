@@ -129,7 +129,7 @@ class AddBookTableViewController: UITableViewController, UITextFieldDelegate, UI
 		
 		(tableView.cellForRow(at: indexPath) as! AddEditCell).valueTextField.text = currentUser.shelves[row].name
 		bookKeys[pickerView.tag].value = currentUser.shelves[row].name
-		print("Shelf is now '\(bookKeys[pickerView.tag].value)'")
+		//print("Shelf is now '\(bookKeys[pickerView.tag].value)'")
 	}
 	
 	func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
